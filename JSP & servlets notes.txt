@@ -1,0 +1,54 @@
+>>>Tomcat creates the request and response object every time we try to access it...but it creates the servlet object once...rather it will create the treads of the servlet
+
+>>>HTTP --> stateless protocol i.e it don't remember the parameter values we pass...hence we create "session"
+
+>>>Tomcat implemented...tomcat specific???...what does that mean...ex. it provides session object, context object,etc...how tomcat provides?
+
+>>>init() & service()...runs before the doGet() & doPost() method
+init() - only once but service() - executes when new req comes
+
+>>>                 first call to servlet
+                              |
+                              |
+                              |
+                    [init(ServletConfig)]
+                              |
+                              |
+                              |
+                          service()
+                              |
+                      ________|_________
+                     |                 |
+                  doGet()             doPost()
+
+
+
+>>>                 subsequent calls to servlet
+                              |
+                              |
+                              |
+                              |
+                              |
+                              |
+                              |
+                          service()
+                              |
+                      ________|_________
+                     |                  |
+                  doGet()             doPost()
+
+>>>when service() method is called...along with it request and response objects are passed
+
+>>>destroy() is called when the project is undeploying or server is stopping
+
+>>>imp packages --> javax.servlet & javax.servlet.http
+
+>>>HTTP is used for the comm b/w client & server
+
+>>>small details of the 8 HTTP methods 
+
+>>> <jsp:include page-"xyz.html/abc.jsp" />
+
+>>>Servlet is a java class processed on the server...that java class generates HTML that is returned to browser...servlet can read data from HTML form...at high level....it's similar to JSP
+
+>>>

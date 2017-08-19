@@ -1,0 +1,11 @@
+=====================================Node.js notes=====================================
+>>>single threaded and behaves asynchronously
+
+>>>Globally available functions/modules
+
+>>>node-dev and jshint
+>>express is popular nodejs web dev framework...some are cors(cross origin resource sharing), body-parser, underscore
+>>websockets --> ws module, checkout socket.io
+
+
+

