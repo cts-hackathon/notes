@@ -130,6 +130,7 @@ we have VPN end point (a logical web server which can give access to person in U
 
 6.Wireless standards
 
+7.now a days systems sometimes we call "router"...is not just a router...it's a firewall..VPN end point...Wireless access poinr(WAP), etc...all logical connections in one physical device
 =============================================Python - networking and security================================================
 
 
