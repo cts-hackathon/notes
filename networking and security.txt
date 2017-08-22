@@ -131,6 +131,17 @@ we have VPN end point (a logical web server which can give access to person in U
 6.Wireless standards
 
 7.now a days systems sometimes we call "router"...is not just a router...it's a firewall..VPN end point...Wireless access poinr(WAP), etc...all logical connections in one physical device
+
+8.Generally speed we talk in terms of "bits/sec"...and size in "bytes"
+
+9.IP addresses - static vs dynamic - static is always better than dynamic
+generally port for some services are fixed...ex HTTP - 80,etc
+
+10.Sync means both up/down speed are same and async means up/down speeds are different
+
+11.point to point wireless -- direction specific...point the direction of antennas towards each other...and different from wireless/wifi
+
+12.DSL
 =============================================Python - networking and security================================================
 
 
