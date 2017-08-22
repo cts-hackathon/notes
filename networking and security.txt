@@ -121,8 +121,14 @@ port forwarding...of the routers...advantages vs disadvantages
 
 2.Physical vs logical connectivity of machines - two comp which seems connected to the same switch via cable may not be able to connected to each other...coz logically they may be on the different network (as in switch can split them)
 
+3.Router - separates the internet connection i.e. fom modem...it will go to different routers
 
+4.VPN - as name suggest it's virtual private network...somebody sitting in US can connect to our inranet of office in india...i.e. to your private network
+we have VPN end point (a logical web server which can give access to person in US via username and password)
 
+5.Hub is dumb but switch is little intelligent...a switch can be programmed\
+
+6.Wireless standards
 
 =============================================Python - networking and security================================================
 
