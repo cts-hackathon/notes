@@ -114,9 +114,17 @@ msf exploit(handler) > set LHOST 192.168.0.110
 msf exploit(handler) > set LPORT 4444
 msf exploit(handler) > exploit
 
-port forwarding...of the routers
+port forwarding...of the routers...advantages vs disadvantages
 
-================================================Python - networking and security================================================
+=============================================Basics of networking=============================================
+1.modem is ur first device which connects to the internet/cloud (cloud is internet only)...then comes the router...then comes the firewall...then comes switches...then lastly your computer
+
+2.Physical vs logical connectivity of machines - two comp which seems connected to the same switch via cable may not be able to connected to each other...coz logically they may be on the different network (as in switch can split them)
+
+
+
+
+=============================================Python - networking and security================================================
 
 
 
