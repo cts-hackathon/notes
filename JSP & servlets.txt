@@ -74,3 +74,5 @@ garbage collector can take care of objects but not the resources
 
 Filters - for validations  --> IMPORATNT
 Listeners - for sessions   --> IMPORATNT
+=====JSP=====
+JSPs will execute on server and their output will be reflected on browser..and JSPs are used to generate dynamic pages..Javascript will execute on client side
