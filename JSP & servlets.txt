@@ -37,5 +37,26 @@ App servers --> JBoss, GlassFish(sun microsystems), Weblogic(oracle), WebSphere(
 
 12.jar cf xyz.war * --> will create the WAR file
 
-13.  
+==============================JSP notes (durga software)=============================
+1.J2SE
+we can build
+a.standalone app - ex.calculator
+b.client server app (using sockets and serverSockets)
 
+2.J2EE
+a.web app - here we can use JSP, taglib, servlets, filters,etc
+b.enterprise and distributed app - ex.if we want to book train (IRCTC) from redbus app...that can be achived using EJBs and J2EE...assuming both redbus and IRCTC are built on java
+c.Interoperable app - if enterprise app are built on different technologies like redbus on java and IRCTC on .NET and here we communicate using XML or JSON
+(we can use core JAX for this)
+
+Servlets are server side java technology and they talk using HTTP protocol...browser send data in HTTP form which then converted into java beans by server and then passed to servlet
+
+we follow MVC arch here...for JSP apps also
+V - using HTML,CSS,JS(browser side validation),etc
+C - servlets...or instead of servlet we can use JSPs too...else we move to structs,spring MVC,etc....C will read data and will send to the M
+M - business layer + DAO (after performing the ops business layer will send the data to the DAO to store into DB)
+
+Two servlets can talk using three methods
+1.getServlet("<servletName>") - getServletContext() will create a ServletContext object - not recommended
+2.RequestDispatcher - .forward() and .include() [will include the o/p of the servlet]    -    using URP pattern[getRequestDispatcher()]   or servlet class name[getNamedDispatcher()]
+3.sendRedirect
