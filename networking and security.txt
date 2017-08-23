@@ -157,6 +157,25 @@ Managed (we can set the configs)vs Unmanaged switches
 
 18.Spaaning tree protocol - for switches
 Network loops - same cable's two ends in different ports will create a network loop...consumes processing power and leads to network shutdown...standard switches like cisco prevents such loops automatically if it finds one.
+
+19.SOHO routers- small office home office routers
+
+20.DHCP - DHCP servers and DHCP addresses
+basically assigns IP addresses to the client computers on the network
+
+21.DNS - turns the name into IP address
+
+22.firewall - it just blocks the PORTS
+
+23.port triggering - avoid
+
+24.DMZ
+
+25.powerline networking 
+
+26.Access point receives and broadcasts to wide range...and bridge can talk to only one particular wireless access point
+
+27.
 =============================================Python - networking and security================================================
 
 
