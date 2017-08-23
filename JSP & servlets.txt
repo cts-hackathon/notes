@@ -142,3 +142,21 @@ JSP --> servlet  --> sevlet class  --> servlet container
 
 if you put .jsp extension and you don't have any java code with your HTML code..it will elad to process delay due to JSP --> servlet  --> sevlet class  --> servlet container
 
+JSP has built in objects
+1.request
+2.response
+3.session
+4.context
+5.page
+6.exception
+7.out
+8.config
+9.pageContext
+[no need to instatiate]
+
+>>><jsp:include page="" />  --> if we make changes into included file...this technique will reflect the changes by reloading the        
+                                included file 
+>>><@ include file="" />    --> if we make changes into included file...this technique won't reflect that...so this is for static only
+                                i.e it will load only once and the same content it will load forever
+                                
+>>>response.sendRedirect("<page.jsp>") --> we can't expect request into page.jsp...for this we need to use RequestDispatcher 
