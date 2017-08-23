@@ -127,5 +127,18 @@ garbage collector can take care of objects but not the resources
 
 Filters - for validations  --> IMPORATNT
 Listeners - for sessions   --> IMPORATNT
-=====JSP=====
+                                                           
+                                                           
+                                                           =====JSP=====
 JSPs will execute on server and their output will be reflected on browser..and JSPs are used to generate dynamic pages..Javascript will execute on client side
+ 
+<%!  _jspInit()   %> -->    init()
+<% ...  %>           -->   service() 
+<%!  _jspDestroy()   %> -->    destroy()
+
+JSP --> servlet  --> sevlet class  --> servlet container
+
+<%=.....%>  == out.println()
+
+if you put .jsp extension and you don't have any java code with your HTML code..it will elad to process delay due to JSP --> servlet  --> sevlet class  --> servlet container
+
