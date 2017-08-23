@@ -142,6 +142,8 @@ generally port for some services are fixed...ex HTTP - 80,etc
 11.point to point wireless -- direction specific...point the direction of antennas towards each other...and different from wireless/wifi
 
 12.DSL
+
+13.Demarc point
 =============================================Python - networking and security================================================
 
 
