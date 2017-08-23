@@ -143,7 +143,20 @@ generally port for some services are fixed...ex HTTP - 80,etc
 
 12.DSL
 
-13.Demarc point
+13.Demarc point, MDFs and IDFs, DMZ
+
+14.OSI model
+
+15.The HUB is basically like a spliter...ex. we have kinda hub in our house for TV...main connection comes and we split that connection and give it to the 4 different TVs...whatever comes from the main connection or if one of the device trying to send the signal to one particular device...it will send that to all the devices connected to the hub which leads to the bandwidth wastage...in hub only one device can communicate...otherwise there will be collison...but in case of SWITCH...it can intelligently understand where a particular device is and will "only" send the data to that device...using MAC addresses it knows where the device is. 
+
+Managed (we can set the configs)vs Unmanaged switches
+
+16.VLAN - we need routers to connect two different VLANs...A VLAN cannot be used to connect two diiferent VLANs
+
+17.QOS/COS (quality/class of service) - it will decide the priority for the communications like VoIP is at highest, then live video streaming...then file downloadings,etc
+
+18.Spaaning tree protocol - for switches
+Network loops - same cable's two ends in different ports will create a network loop...consumes processing power and leads to network shutdown...standard switches like cisco prevents such loops automatically if it finds one.
 =============================================Python - networking and security================================================
 
 
