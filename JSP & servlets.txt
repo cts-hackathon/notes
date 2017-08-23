@@ -71,3 +71,6 @@ we can use any of the above 3
 ServletConfig [<init-param>...</init-param>] vs ServletContext [<context-param>...</context-param>]
 
 garbage collector can take care of objects but not the resources
+
+Filters - for validations  --> IMPORATNT
+Listeners - for sessions   --> IMPORATNT
