@@ -60,3 +60,14 @@ Two servlets can talk using three methods
 1.getServlet("<servletName>") - getServletContext() will create a ServletContext object - not recommended
 2.RequestDispatcher - .forward() and .include() [will include the o/p of the servlet]    -    using URP pattern[getRequestDispatcher()]   or servlet class name[getNamedDispatcher()]
 3.sendRedirect
+  
+>>>Writing a servlet
+1.Servlet (interface) - have to implement all 5 methods
+2.Generic servlet(abstract class) - 4 are already implemented...only service(ServletRequest, ServletResponse) we have to implement
+3.HttpServlet (abstract class) - we can override doGet() and doPost() 
+
+we can use any of the above 3
+
+ServletConfig [<init-param>...</init-param>] vs ServletContext [<context-param>...</context-param>]
+
+garbage collector can take care of objects but not the resources
