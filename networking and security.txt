@@ -175,7 +175,9 @@ basically assigns IP addresses to the client computers on the network
 
 26.Access point receives and broadcasts to wide range...and bridge can talk to only one particular wireless access point
 
-27.
+27.power over ethernet
+
+28.
 =============================================Python - networking and security================================================
 
 
