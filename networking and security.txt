@@ -177,7 +177,20 @@ basically assigns IP addresses to the client computers on the network
 
 27.power over ethernet
 
-28.
+28.Network mapping
+learn all the protocols...TCP/IP, ICMP(port scanning..."ping"), SNMP(to gather the system info & resources),etc.
+
+default gateway - ip of a router i.e the ip which takes you out of your building
+traceroute  -->  tracert() --> all the routers you encouter while reaching a particular server
+ping --> for all the networking devices which use TCP/IP
+
+Default gateway/DHCP server and DNS server can have same address (if the network is simple) or can be different
+
+====Network mapping tools=====
+1.portScane
+2.spiceworks - zeher hai ekdam
+
+We can turn off the ping request
 =============================================Python - networking and security================================================
 
 
