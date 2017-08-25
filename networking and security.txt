@@ -219,7 +219,9 @@ C class subnet mask - 255.255.255.0 --> (2^8 - 2) = 254 hosts
 
 if two devices are on two different TCP/IP subnets --> they cannnot talk...we need router for that
 
+SERVER Operating systems are very fast, robust and can handle number of user requests than normal operating systems
  
+Authentication[in windows] --> Active Directory -- gives access key
 
 
 
