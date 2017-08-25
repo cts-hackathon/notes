@@ -206,7 +206,24 @@ we have to configure the DHCP
 NAT (network addresss translation...external address to local netrwork)
 coz of NAT two devices can have same IP...else we would be required unique address for each device which is never possible
 
-=============================================Python - networking and security================================================
+=====================Subnet masking=======================
+192.168.1.1  -  network identifier + device identifier --> this two we will know from subnet mask
+depending on how many networks we need and how many devices we need on network...we can decide the IPv4 and subnet mask
+
+_ _ _ _ _ _ _ _. _ _ _ _ _ _ _. _ _ _ _ _ _ _. _ _ _ _ _ _ _  --> fist n bits for no of networks and remaining all 16-n or how many u want will be for hosts
+2^n = # of networks   ====== [(2^n) - 2] = # of hosts
+if we choose first 8 bits for subnet -> 11111111.00000000.00000000.00000000 == 255.0.0.0 = subnmet mask
+A class subnet mask - 255.0.0.0
+B class subnet mask - 255.255.0.0
+C class subnet mask - 255.255.255.0
+
+
+
+
+
+
+
+
 
 
 
