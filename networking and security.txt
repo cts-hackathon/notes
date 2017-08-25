@@ -215,10 +215,11 @@ _ _ _ _ _ _ _ _. _ _ _ _ _ _ _. _ _ _ _ _ _ _. _ _ _ _ _ _ _  --> fist n bits fo
 if we choose first 8 bits for subnet -> 11111111.00000000.00000000.00000000 == 255.0.0.0 = subnmet mask
 A class subnet mask - 255.0.0.0
 B class subnet mask - 255.255.0.0
-C class subnet mask - 255.255.255.0
+C class subnet mask - 255.255.255.0 --> (2^8 - 2) = 254 hosts
 
+if two devices are on two different TCP/IP subnets --> they cannnot talk...we need router for that
 
-
+ 
 
 
 
