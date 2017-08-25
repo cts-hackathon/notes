@@ -191,6 +191,21 @@ Default gateway/DHCP server and DNS server can have same address (if the network
 2.spiceworks - zeher hai ekdam
 
 We can turn off the ping request
+
+====================TCP/IP protocol(along with some other protocol)====================
+IP - deals with all the types of ip addresses 
+Once IP discovers computer using ip addresses...TCP comes in picture and decides how they will talk..."windowing " 
+
+Subnet masking - we can avoid the communication between all the systems on network
+
+when we search for something...it first looks in local network(for that IP address {DNS converts domain name to ip}) and if not found...it goes out via default gatewy into the internet
+
+DHCP - allocates the all types of IP addresses
+we have to configure the DHCP
+
+NAT (network addresss translation...external address to local netrwork)
+coz of NAT two devices can have same IP...else we would be required unique address for each device which is never possible
+
 =============================================Python - networking and security================================================
 
 
