@@ -223,9 +223,21 @@ SERVER Operating systems are very fast, robust and can handle number of user req
  
 Authentication[in windows] --> Active Directory -- gives access key
 
+_____________________________VPN (client server architecture)_____________________________
+To connect the two networks securely
+why VPN invented?  --> for military purpose...even the in between offices blows off during the war...St.A & St.B can still communicate...so St.A and St.B can use another route automatically
 
+A MAN IN THE MIDDLE ATTACK
 
+Tunneling protocol - creates a tunnel(data tube) between St.A & St.B....and the data is encrypted too
+and this tunnel is smart...if it finds someone hacking...it will create a new route for it.
 
+VPN server needs credential to connect.VPN connection keeps dropping the tunnel and keep making new one may be because of fucked up wiring...and may not be always hacker attack...coz old wiring drops packets
+
+_____________________________________VoIP__________________________________________
+it's what is means...voice over IP...voice over internet
+IP trunks
+VoIP servers
 
 
 
