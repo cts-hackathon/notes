@@ -238,11 +238,33 @@ _____________________________________VoIP_______________________________________
 it's what is means...voice over IP...voice over internet
 IP trunks
 VoIP servers
+VoIP gateways connects the normal telephone lines and VoIP networks
+Normal telephone/mobile call latency = ~45ms  v/s  VoIP latency = 75-100ms
+
+================Hacking DNS========================
+HOSTS file --> Local DNS --> public DNS...if mapping is not found in the HOSTS file it goes to local DNS --> if not it goes to public DNS
+HOSTS file in the ___C:\Windows\System32\drivers\etc___ can be modified to wrongly map the DNS
+HOSTS is particular to that PCs wrong mapping
+Local DNS will lead to the problems for all the PCs on that local network
+Public DNS will lead to the problems for all the PCs on the internet
+
+opendns.org
+
+bandwidth throttling(how much bandwidth network should use and all) and NetBalancer
 
 
+>>>Advanced persistent threat(APT)...get into the target undetected
 
+Obtaining the password
+1.active online attacks
+dictionary, brute force, keylogger attack
+2.passive online attack
+packet sniffing, MITM(man in the middle),reply attack
+3.offline evaluation
+rainbow attacks - ranbow tables - contains hash values for possibility
 
+Famous hashing algo
+1.SHA (secure hash algorithm)  
+2.MD5 (message digest)
 
-
-
-
+Salted hash
