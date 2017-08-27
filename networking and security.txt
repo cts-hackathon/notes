@@ -348,3 +348,6 @@ Ubiquiti: ubnt/ubnt
 Uniview: admin/123456
 W-Box: admin/wbox123
 Wodsee: admin/(blank)
+
+
+wireshark filters
