@@ -1,1 +1,17 @@
 =====================================STRUTS notes=====================================
+>>provides support for "view" and "controller" layer..and not "model" of MVC
+>>For view layer of MVC struts prvoded form tag support...if we use this instead of HTMl form...we will get form backup and validation support
+  I18N (international) tag support - multiple language support
+  Logical tag support similar to JSTL i.e. iterator,condition tag
+  tiles tag suppport - UI template
+  ajax( only in x2 version)
+  OGNL expression support( only in x2 version)
+  
+>>For controller part struts have given:
+  multi action controoler
+  multi button controller
+  multi form controller
+  exception handler support
+  plug-in support
+  pre handling support....post handling support(only in x2 version)
+  
