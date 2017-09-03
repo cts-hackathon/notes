@@ -15,3 +15,27 @@
   plug-in support
   pre handling support....post handling support(only in x2 version)
   
+============JSP model 1============
+form 1  |
+form 2  |--> JSP page --> not recommended
+form 3  |
+
+
+============JSP model 2============
+form 1  |
+form 2  |--> Servlet  --> struts 1x(ActionServlet), JSF(FacesServlet), spring MVC(DispatcherServlet)are based on this model
+form 3  |
+
+
+============JSP model 3============
+form 1  | 
+form 2  |--> Filters  --> struts 2x(FilterDispatcher, StrutsPrepareAndExecuteFilter) is based on this model
+form 3  |
+
+
+============JSP model 4============
+form 1  |
+form 2  |--> Tags (ultimately included into JSP page only) --> not recommended
+form 3  |
+
+
