@@ -1,0 +1,27 @@
+>>>Creating object
+    var myCar = new Object();
+    myCar.speed = 50;
+    myCar.color = "red";
+    myCar.drive = function(){
+      console.log("Now driving...");
+    }
+    
+    =====OR JSON formatted=====
+    
+    var myCar = {
+      speed : 50;
+      color : "red";
+      drive : function(){
+        console.log("Now driving...");
+      } 
+    }
+    
+    
+>>>Creating constructor
+var Car = function(speed, color){
+	this.speed = speed;
+	this.color = color;
+	this.drive = function(){
+		console.log("Now driving...");
+	}
+}
