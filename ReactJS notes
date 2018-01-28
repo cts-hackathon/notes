@@ -1,0 +1,6 @@
+>>>Most browsers don't support ES6 imports hence we need to bundle our all js code into one single js file and then render into HTML...hence webpack(bundles all assets into single file and then uses into HTML)
+
+>>>ES6 ---(Babel)---> ES5
+
+>>>Virtual DOM(react's DOM in js format viz is really fast) representation of actual DOM(very slow), while re-rendering it will compare the old virtual DOM and new virtual DOM...and then only re-render the changes. 
+
