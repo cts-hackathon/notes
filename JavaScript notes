@@ -17,6 +17,31 @@
     }
     
     
+    =====OR Factory pattern=====
+    
+    var Car = function(speed, color){
+    	var temp = {};
+	temp.speed = speed;
+	temp.color = color;
+	
+	return temp;
+    }
+    
+    var myCar = Car(50, "red");
+    
+    =====OR (prototype pattern)=====
+    var Car = function(){};
+    Car.prototype.speed = 0;
+    Car.prototype.color = "blank";
+    Car.prototype.drive = function(){
+    	console.log("Now driving...");
+    };
+    
+    var myCar = new Car();
+    myCar.speed = 50;
+    myCar.color = "red";
+    
+    
 >>>Creating constructor
 var Car = function(speed, color){
 	this.speed = speed;
@@ -25,3 +50,6 @@ var Car = function(speed, color){
 		console.log("Now driving...");
 	}
 }
+
+var myCar = new Car(50, "white");
+>>>Javascript has no formal support for class creation
