@@ -53,3 +53,9 @@ var Car = function(speed, color){
 
 var myCar = new Car(50, "white");
 >>>Javascript has no formal support for class creation
+   In javascript every function exp is a constructor.
+   
+>>>Javascript is single threaded...i.e.only one script can run at a time.
+AJAX is non-blocking...it's not multi-threading
+
+>>>Closures & Promises in javascript...
