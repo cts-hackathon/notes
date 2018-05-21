@@ -17,7 +17,7 @@ Storage vs Database - We can't store image in a database , so we store image pat
 
 =====AWS compute services=====
 
-EC2 - simple a rock server
+EC2(Elastic compute cloud) - simple a rock server
 
 Lambda - not for hosting web application, but used for background tasks
 Ex. When we upload image, image compression will be done by Lambda (it works by event trigger mechanism)...which is like background task and then compressed image will be stored in the file systems like S3
@@ -77,5 +77,7 @@ Storage gateway - Provide seamless integration between your on premise(private d
 1. SES - bulk emailing service 7 automation too
 2. SQS - queuing service which acts as a buffer
 3. SNS - simple notification service (send notifications to related AWS services)
+
+*****Link to slides --> https://www.slideshare.net/samthecloudguy ******
 
 
