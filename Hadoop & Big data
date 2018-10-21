@@ -1,1 +1,5 @@
 Hadoop processes files in sequencial manner, for random access we can HBASE (NoSQL)
+MapReduce vs Spark - MapReduce can only do the batch processing, while spark can do both the batch processing and the real-time processing
+Batch processing - storing the data first and then processing 
+Real-time processing - processing the data as it comes i.e. immediately (Ex.debit card txn system, it immediately perform all the updates)
+
