@@ -3,3 +3,24 @@ MapReduce vs Spark - MapReduce can only do the batch processing, while spark can
 Batch processing - storing the data first and then processing 
 Real-time processing - processing the data as it comes i.e. immediately (Ex.debit card txn system, it immediately perform all the updates)
 
+=======Why YARN was introduced========
+In hadoop 1.0 Job tracker was totally separate machine not namenode
+and there is only 1 Job tracker for all the jobs submitted which in turn tracks task trackers of every submitted job (single job can have many task tracker which takes code and runs on worker node)
+as no of jobs keep increasing and we have only 1 Job tracker...it becomes performance bottleneck for cluster
+We might think that then we can have multiple job trackers, but again we will require something to track all the job trackers which is again bottleneck, but now the bottleneck is in architecture
+
+we can run only mapreduce job, nothing else
+
+If we have 4 slaces of 4GB RAM each, lets say each map job needs 1GB RAM, then if a job comes with 2 map job in that case remaining resource will be wasted i.e 2GB RAM...so basically no resource(RAM, HD, etc) management...Job tracker and task tracker are only related to the job and that too mapreduce job
+If a job comes with 10 map, then other 5 map jobs would have to wait in the queue coz single slave has only 4GB RAM
+
+=====How YARN works======
+1. When resource mngr receives job, it will contact any NM(node manager) not necessarily the one which contains the data, then that NM(which was contacted by RM) will start an APPLICATION MASTER which will be per job and will monitor everything related to job from start till end.
+2.Then APP MASTER will contact it's NM and RM to find the actual data on datanodes and then it will launch containers on those perticular datanodes (container is simply Java or JVM process...inside the container your job will get executed)
+3.Now whennever resources are required, AM can called RM for that
+
+In production scenario, it's good to have RM and NameNode on separate machines as they both are masters, but for testing small datasets we can keep them on same machine
+
+
+
+
