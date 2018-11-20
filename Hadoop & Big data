@@ -21,6 +21,10 @@ If a job comes with 10 map, then other 5 map jobs would have to wait in the queu
 
 In production scenario, it's good to have RM and NameNode on separate machines as they both are masters, but for testing small datasets we can keep them on same machine
 
+RM if not configured has the FIFO scheduler i.e ex if we have 10 nodes in a cluster with 4GB RAM each and assuming 1 map job takes 1GB RAM, if 3-4 ppl come submit 100 map jobs...what will happen, our RAM is 40GB total...req is 100GB, RM will do job scheduling in FIFO manner by default
+but sometimes, this FIFO schedulaer may be efficient from priority perspective....so we have FAIR scheduler and CAPACITY scheduler and this 2 are free apache scheduler which will avoid bottleneck of FIFO shceduler...and we can share resources for all the coming jobs no need to waut
+Cloudera by default - fair scheduler
+Hortonworks by default - capacity scheduler
 
 
 
