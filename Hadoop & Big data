@@ -26,9 +26,9 @@ but sometimes, this FIFO schedulaer may be efficient from priority perspective..
 Cloudera by default - fair scheduler
 Hortonworks by default - capacity scheduler
 
-
-
 https://dzone.com/articles/apache-spark-on-yarn-resource-planning.   --->.    executor calculation
 https://www.linkedin.com/pulse/how-configure-spark-cluster-yarn-artem-pichugin/
 
 https://stackoverflow.com/questions/32621990/what-are-workers-executors-cores-in-spark-standalone-cluster. -->. spark details
+
+
