@@ -31,4 +31,10 @@ https://www.linkedin.com/pulse/how-configure-spark-cluster-yarn-artem-pichugin/
 
 https://stackoverflow.com/questions/32621990/what-are-workers-executors-cores-in-spark-standalone-cluster. -->. spark details
 
+Spark vs MapReduce -- speed comparision --> As spark uses DAG, if it failed at particular step, it can easily go back and start re-processing from there. but, in case of mapReduce it it fails somewhere it has to start from very first step
+Other thing is mapReduce does read/write on disk for every map-reduce function and that's why it's slow compare to spark which stores result into memory only as an RDD
+
+PIG & Hive is just another way if you don't know Spark/java/scala/python
+
+We can decide how much % of cluster memory we can give to spark Ex. if cluster has 5 nodes with actual RAM of 4GB, then we have total 20GB and we can allocate for ex. 40% i.e. 8GB to spark cluster.  
 
