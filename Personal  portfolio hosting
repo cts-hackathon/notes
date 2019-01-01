@@ -1,0 +1,12 @@
+========================Getting codebase========================
+1.clone repo in ~/repo
+========================Setup repo for static content========================
+1.watch the video
+https://www.youtube.com/watch?v=Jsmeh7q9Qv4&t=1s
+2.As we can host multiple sites/apps on single nginx instance/server, check following link for setting up separate server block
+https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-18-04
+3.sudo systemctl start/restart/stop/reload nginx
+========================SSL certificate========================
+watch this --> https://www.youtube.com/watch?v=m9aa7xqX67c
+=======================backup files=======================
+backups of config & other important files is created as file_name.bak
