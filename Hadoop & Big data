@@ -38,3 +38,4 @@ PIG & Hive is just another way if you don't know Spark/java/scala/python
 
 We can decide how much % of cluster memory we can give to spark Ex. if cluster has 5 nodes with actual RAM of 4GB, then we have total 20GB and we can allocate for ex. 40% i.e. 8GB to spark cluster.  
 
+Spark tuts --> https://data-flair.training/blogs/what-is-spark/
