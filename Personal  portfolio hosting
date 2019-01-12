@@ -18,7 +18,7 @@ location /api {
 ...
 ...
 }
-
+3. Node server doesn't need to be the ssl or https secured because nginx is hadling that part, so internal servers need not bother about https 
 =================Clone codebase on AppServer====================
 1. Similar to AppServer, but we will be running server here
 2. node installation similar to WebServer
