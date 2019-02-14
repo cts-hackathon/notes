@@ -1,2 +1,16 @@
+===============================ML Tuts================================
+https://www.geeksforgeeks.org/machine-learning/
+
 ===============================DATA PREPROCESSING===============================
 https://www.kaggle.com/sangwookchn/data-preprocessing-techniques-using-pandas/data
+
+***Feature Selection VS Feature Extraction***
+Feature extraction is the process of converting the raw data into (usually) some other data type, which the algorithm works with.
+Feature selection is the process of selecting specific features, from a features pool. This helps in simplification, regularization and shortening training time.
+Let’s take an example from text data: the task of Sentiment Analysis, where we wish to classify text into: positive, neutral or negative sentiment.
+The specific system we consider is using uni-gram and bi-gram features with a linear model. First, we need to extract from the input text uni-grams and bi-grams. Each tuple would be mapped to a number which would represent that feature. Those features are learned during training and used for calculating the final score during test/prediction time.
+When we perform feature selection, we only select a subset of features. Note that this is a phase, which occurs for tuning the model, and not during test time classification. For example, the uni-gram: “the” appears frequently in all classes, therefore it is not predictive of the labels. Feature selection algorithms (e.g Mutual Information[1],Chi-square [2]) would probably discard features like the word “the” (and other stop words in general).
+
+Standardization vs Normalization
+x_stand = x - mean(x) / stdev(x)    x_norm = x - min(x) / max(x) - min(x)
+
