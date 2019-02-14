@@ -39,3 +39,19 @@ PIG & Hive is just another way if you don't know Spark/java/scala/python
 We can decide how much % of cluster memory we can give to spark Ex. if cluster has 5 nodes with actual RAM of 4GB, then we have total 20GB and we can allocate for ex. 40% i.e. 8GB to spark cluster.  
 
 Spark tuts --> https://data-flair.training/blogs/what-is-spark/
+
+JVM shouldn't get more than 45GBs of RAM, otherwise garbage collection won't happen properly
+
+no of cores in spark aren't the actual cores of cpu...Ex. if your machine is 8 core...then if you are planning for 6 cores to spark job...then it should 2-3 fold 6...i.e. 12-18 cores (=tasks inside executor)
+
+Settings pref level 
+1. code (SparkContext)       most
+2. cmd line (spark-submit)    |
+3. spark config files         |
+4. spark default            least
+
+Spark execution mode ---> very very very very important
+fuddi's 6 hr video from 1hr 20min - 2hr 40min
+
+
+
