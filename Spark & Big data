@@ -40,7 +40,9 @@ We can decide how much % of cluster memory we can give to spark Ex. if cluster h
 
 Spark tuts --> https://data-flair.training/blogs/what-is-spark/
 
-JVM shouldn't get more than 45GBs of RAM, otherwise garbage collection won't happen properly
+JVM shouldn't get more than 45GBs of RAM, otherwise garbage collection won't happen properly.
+some research has shown exec with more than 64GB RAM perform badly with delays in garbage collections
+
 
 no of cores in spark aren't the actual cores of cpu...Ex. if your machine is 8 core...then if you are planning for 6 cores to spark job...then it should 2-3 fold 6...i.e. 12-18 cores (=tasks inside executor)
 
@@ -51,7 +53,6 @@ Settings pref level
 4. spark default            least
 
 Spark execution mode ---> very very very very important
-fuddi's 6 hr video from 1hr 20min - 2hr 40min
 
 how to choose no of executors for job?
 What is shuffle actually? - sending data b/w executors ?...when shuffling happens...join,reduce ops?
@@ -94,21 +95,62 @@ Spark maps the number tasks on a particular Executor to the number of cores allo
 Perfect article about how to have the partitioning in spark application
 https://www.dezyre.com/article/how-data-partitioning-in-spark-helps-achieve-more-parallelism/297
 
-Spark can run in 4 different modes
+Spark can run in 4 different modes (spark architecture is design to behave differently with this 4 modes)
+fuddi's 6 hr video from 1hr 20min - 2hr 40min (for modes of execution)
 1. Local - single JVM, Local mode, static partitioning i.e. exec can't be increased in runtime as per req and are fixed as given before starting the app
 2. Saprk standalone - Cluster mode, static partitioning i.e. exec can't be increased in runtime as per req and are fixed as given before starting the app, dynamic partitioning might be available in next releases
 > spark-master (kind of scheduler) = start-master.sh & on each worker = start-slave.sh, spark-master daemon will run on one of the machines and worker dowmons will be running on all the machine i.e. on one of the machine there will be one worker daemoon & spark-master daemon
 > this spark-master & worker daemon are just resource manager so can run with 512MB and 1GB RAM respectively
 > this spark-master & daemon are very similar to the ones in YARN
 > when we submit app in standalone mode i.e. spark-submit --name "App" --master spark://host:port myApp.jar, driver will start on host(please check once?) and then that driver will ask the spark-master for the resources and then spark-master will ask the workers to start the exec 
+> exec JVM crashes worker will restart it and if worker JVM crashes, spark-master will restart it. We can configure spark-master to restart driver if it crashes, but if driver crashes all exec will be restarted
+(this is what setting up of architecture is!)
+> it is okay if you have one of the machines to be of different config and you can run more/less tasks(cores) on it, but you have to do a setting in spark-env.sh SPARK_WORKER_CORES for respective machine
+> we can launch more than one spark-master too!
+> worker can start more than exec in a machine (ex. 16 core machine with 5cores/exec we can have max 3 exec in that machine) but one worker cannot start more than 1 exec for same driver(application). If we want to launch multiple exec of same app on same machine then we need multiple worker daemon running on that machine which will start 1-1 exec of application
+settings req for that are in spark-env.sh
+SPARK_WORKER_INSTANCES
+SPARK_WORKER_CORES = cores it can give to underlying exec
+SPARK_WORKER_MEMORY = mem it can give to underlying exec
+SPARK_DAEMON_MEMORY = actually mem for spark-master & worker daemons
+> *****very important thing is that you can't give num of exec in standalone mode (coz it will start exec on all machines i.e. no of exec = no of workers). we can give spark.cores.max(max for whole app and not per exec...it will evenly distribute among exec) which will be load balances across all the exec also we can give spark.executor.memeory(this is per exec) neither you can say I want x no of exec with y cores/exec
+> in standalone mode apps are submitted in FIFO mode by default
+> spark web UI which we see in general which shows jobs,stages,storage, exec,etc is the driver UI mainly
+> Every action kicks off 1 Job and the job is consist of stages which indeed divided into tasks
+> In webUI thread dump can tell hotspots in the execution and we can identify what is taking time actually.
 
 3. Yarn - Cluster mode, dynamic partitioning i.e. exec can be increased in runtime as per req 
+ResourceManager basically keeps track of cores free, mem available, network bandwidth, etc on NodeManager with heartbeats
+When client submits app to ResourceManager, it will contact NodeManager for the req resources and will launch App-master on one of them, then that App-master will communicate back to ResourceManager for the resources it need t actually excute the job i.e. it will ask ResourceManager to give up some NodeManager so that App-master can launch the containers (in which executors  will run). once that's done App-master don't need to communicate with ResourceManager i.e. even if ResourceManager crashes App-master can still continue with jobs only it won't be able request more resources as ResourceManager has crashed.
+ResourceManager contains scheduler + Apps-master (Apps-master launches crashed App-master)
+In YARN mode also we can have TWO MODES client & cluster mode
+1. Client mode (scale-shell/python-shell mainly) - driver runs on client machine (ur laptop, App-master is the yarn-App-master which launches yarn-containers which then launches executors inside those containers)
+driver manages/schedules the tasks (what happens inside executor) which is different from what ResourceManager schedules
+so if you try to disconnect your laptop from cluster, it will crash whole application coz driver is running on your laptop i.e client mode is for interactive purpose
+2. Cluster mode - if you want to submit app and then come and look after sometime then you need to submit application in cluster mode
+Here driver will run inside the App-master
+=====Dynamic allocation=====
+spark.dynamicAllocation.enabled
+spark.dynamicAllocation.minExecutors
+spark.dynamicAllocation.maxExecutors
+spark.dynamicAllocation.sustainedSchedlerBacklogTimeout (N)
+spark.dynamicAllocation.schedlerBacklogTimeout (M)
+spark.dynamicAllocation.executorIdleTimeout (K)
+(let's say minExecutors allocated were 10 and maxExecutors = 100, if there is backlog of tasks pending in driver, then after sustainedSchedlerBacklogTimeout it will trigger few more executors, if still there is a backlog it will exponentially keep adding more executors after schedlerBacklogTimeout.
+if executors are idle more executorIdleTimeout then it will start releasing those executor JVMs)
+
+In client mode we can see logs on console, but in cluster mode we have logs available
+History-server - another JVM which takes up nearly 512MB(to see the logs even if driver and exec are done with the job)
+
+
 4. Mesos - Cluster mode, dynamic partitioning i.e. exec can be increased in runtime as per req
 
 Parallelism in MapReduce vs Spark
 1. In MapReduce parallelism is achieved with diff processIds i.e. separate JVMs or separate map & reduce tasks
 2. In Spark, parallelism is achieved with executors running concurrent tasks inside them
 3. In MapReduce the slots are hardcoded i.e. fixed for map & fixed for reduce viz if only map tasks are running reduce slots will be seating idle and CPU consumption won't be 100% unlike in spark the executors & their tasks have generic slots where any type of map/reduce/any other op can run
+
+what is tachyon? (sie in mem, size in tachyon, size on disk)
 
 How to assign cores/exec ?
 Ans - databricks -> If you have total 8 CPUs then you think assign 6 to spark app's exec, but you will gain performance actually when that is 6*2 = 12 (2-3 times of 6)
