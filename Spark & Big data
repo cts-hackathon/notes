@@ -53,5 +53,47 @@ Settings pref level
 Spark execution mode ---> very very very very important
 fuddi's 6 hr video from 1hr 20min - 2hr 40min
 
+how to choose no of executors for job?
+What is shuffle actually? - sending data b/w executors ?...when shuffling happens...join,reduce ops?
+
+Spark job tuning - 
+Part 1 - http://blog.cloudera.com/blog/2015/03/how-to-tune-your-apache-spark-jobs-part-1/
+Part2 - https://blog.cloudera.com/blog/2015/03/how-to-tune-your-apache-spark-jobs-part-2/
+Important - https://stackoverflow.com/questions/24622108/apache-spark-the-number-of-cores-vs-the-number-of-executors
+http://site.clairvoyantsoft.com/understanding-resource-allocation-configurations-spark-application/
+https://dzone.com/articles/apache-spark-on-yarn-resource-planning
+https://dzone.com/articles/alpine-data-how-to-use-the-yarn-api-to-determine-r?fromrel=true
+https://dzone.com/articles/understanding-optimized-logical-plan-in-spark?fromrel=true
+
+
+blog.cloudera.org -- good resource
+
+Spark on YARN - Cloudera blog --> https://blog.cloudera.com/blog/2014/05/apache-spark-resource-management-and-yarn-app-models/
+
+Default partitioning?
+ES-Spark --> https://www.elastic.co/guide/en/elasticsearch/hadoop/master/arch.html
+
+Serialization
+In distributed computing, you generally want to avoid writing data back and forth because it’s expensive. Instead, the common paradigm is to bring your code to your data. This is why many frameworks are based on the JVM, which lets you execute code on the same machine as the data. Serialization is the process of translating this code into an ideally compressed format for efficient transfer over the network. By default, Spark uses the standard Java serializer. However, you can get much faster and more memory-efficient serialization using Kryo serialization. Switching to Kryo can reduce memory pressure on your cluster and improve stability.
+
+What is shuffling and when does it happens...?
+https://0x0fff.com/spark-architecture-shuffle/
+There are many different tasks that require shuffling of the data across the cluster, for instance table join – to join two tables on the field “id”, you must be sure that all the data for the same values of “id” for both of the tables are stored in the same chunks. Imagine the tables with integer keys ranging from 1 to 1’000’000. By storing the data in same chunks I mean that for instance for both tables values of the key 1-100 are stored in a single partition/chunk, this way instead of going through the whole second table for each partition of the first one, we can join partition with partition directly, because we know that the key values 1-100 are stored only in these two partitions. To achieve this both tables should have the same number of partitions, this way their join would require much less computations. So now you can understand how important shuffling is.
+
+partition's max size?
+
+Spill to memory vs spill to disk (where it spills on disk)
+
+Avoid having exec mem > 64GB (delays in garbage collection)
+Running tiny executors (with a single core and just enough memory needed to run a single task, for example) throws away the benefits that come from running multiple tasks in a single JVM
+
+What determines how many tasks can run concurrently on a Spark executor?
+Simply,  task per exec = cores per exec
+Spark maps the number tasks on a particular Executor to the number of cores allocated to it. By default, Spark assigns one core to a task which is controlled by the spark.task.cpus parameter which defaults to 1
+
+Perfect article about how to have the partitioning in spark application
+https://www.dezyre.com/article/how-data-partitioning-in-spark-helps-achieve-more-parallelism/297
+
+
 
 
