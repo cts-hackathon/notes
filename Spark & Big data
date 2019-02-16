@@ -94,6 +94,37 @@ Spark maps the number tasks on a particular Executor to the number of cores allo
 Perfect article about how to have the partitioning in spark application
 https://www.dezyre.com/article/how-data-partitioning-in-spark-helps-achieve-more-parallelism/297
 
+Spark can run in 4 different modes
+1. Local - single JVM, Local mode, static partitioning i.e. exec can't be increased in runtime as per req and are fixed as given before starting the app
+2. Saprk standalone - Cluster mode, static partitioning i.e. exec can't be increased in runtime as per req and are fixed as given before starting the app, dynamic partitioning might be available in next releases
+> spark-master (kind of scheduler) = start-master.sh & on each worker = start-slave.sh, spark-master daemon will run on one of the machines and worker dowmons will be running on all the machine i.e. on one of the machine there will be one worker daemoon & spark-master daemon
+> this spark-master & worker daemon are just resource manager so can run with 512MB and 1GB RAM respectively
+> this spark-master & daemon are very similar to the ones in YARN
+> when we submit app in standalone mode i.e. spark-submit --name "App" --master spark://host:port myApp.jar, driver will start on host(please check once?) and then that driver will ask the spark-master for the resources and then spark-master will ask the workers to start the exec 
+
+3. Yarn - Cluster mode, dynamic partitioning i.e. exec can be increased in runtime as per req 
+4. Mesos - Cluster mode, dynamic partitioning i.e. exec can be increased in runtime as per req
+
+Parallelism in MapReduce vs Spark
+1. In MapReduce parallelism is achieved with diff processIds i.e. separate JVMs or separate map & reduce tasks
+2. In Spark, parallelism is achieved with executors running concurrent tasks inside them
+3. In MapReduce the slots are hardcoded i.e. fixed for map & fixed for reduce viz if only map tasks are running reduce slots will be seating idle and CPU consumption won't be 100% unlike in spark the executors & their tasks have generic slots where any type of map/reduce/any other op can run
+
+How to assign cores/exec ?
+Ans - databricks -> If you have total 8 CPUs then you think assign 6 to spark app's exec, but you will gain performance actually when that is 6*2 = 12 (2-3 times of 6)
+because this 6 CPUs are not hardly assign to the JVM, they are doing whole lot of other OS tasks too
+(doing this has shown inc is performance by 2-3 times)
+
+SPARK_LOCAL_DIRS (spark-env.sh & it's recommended to use separate SSDs alongside OS disk for this)
+Is used to spill the data that's don't fit in memory ex. if you load data from S3 and it's not fitting into RAM (exec memory) it will be spilled down into this SPARK_LOCAL_DIRS, if spark needs to access this data it won't need to go back to S3 over network it can simply take it from this local SSDs. Also intermediate shuffled data is also spilled over to this SSDs if not fitting into memory
+(does it cleansup once app execution finished ?)
+
+
+
+
+
+
+
 
 
 
