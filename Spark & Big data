@@ -55,7 +55,21 @@ Settings pref level
 Spark execution mode ---> very very very very important
 
 how to choose no of executors for job?
-What is shuffle actually? - sending data b/w executors ?...when shuffling happens...join,reduce ops?
+
+===What is shuffle actually? ===
+- sending data b/w executors ?...when shuffling happens...join,reduce ops?
+- shuffle will happen when you do repartition, join, cogroup, *by, *byKey ops
+- repartition is coalese with shuffle=true (ShuffledRDD comes out as a result)
+#implementation of repartition function
+{
+def repartition(numPartitions: Int)(
+    implicit ord: Ordering[T] = null): RDD[T] = {
+        coalese(numPartitions, shuffle=true)
+    }
+}
+- To inc partitions use repartition() & to dec the partitions use coalese()
+
+
 
 Spark job tuning - 
 Part 1 - http://blog.cloudera.com/blog/2015/03/how-to-tune-your-apache-spark-jobs-part-1/
@@ -74,7 +88,7 @@ Spark on YARN - Cloudera blog --> https://blog.cloudera.com/blog/2014/05/apache-
 Default partitioning?
 ES-Spark --> https://www.elastic.co/guide/en/elasticsearch/hadoop/master/arch.html
 
-Serialization
+===Serialization===
 In distributed computing, you generally want to avoid writing data back and forth because it’s expensive. Instead, the common paradigm is to bring your code to your data. This is why many frameworks are based on the JVM, which lets you execute code on the same machine as the data. Serialization is the process of translating this code into an ideally compressed format for efficient transfer over the network. By default, Spark uses the standard Java serializer. However, you can get much faster and more memory-efficient serialization using Kryo serialization. Switching to Kryo can reduce memory pressure on your cluster and improve stability.
 
 What is shuffling and when does it happens...?
@@ -95,7 +109,7 @@ Spark maps the number tasks on a particular Executor to the number of cores allo
 Perfect article about how to have the partitioning in spark application
 https://www.dezyre.com/article/how-data-partitioning-in-spark-helps-achieve-more-parallelism/297
 
-Spark can run in 4 different modes (spark architecture is design to behave differently with this 4 modes)
+===Spark can run in 4 different modes (spark architecture is design to behave differently with this 4 modes)===
 fuddi's 6 hr video from 1hr 20min - 2hr 40min (for modes of execution)
 1. Local - single JVM, Local mode, static partitioning i.e. exec can't be increased in runtime as per req and are fixed as given before starting the app
 2. Saprk standalone - Cluster mode, static partitioning i.e. exec can't be increased in runtime as per req and are fixed as given before starting the app, dynamic partitioning might be available in next releases
@@ -142,10 +156,9 @@ if executors are idle more executorIdleTimeout then it will start releasing thos
 In client mode we can see logs on console, but in cluster mode we have logs available
 History-server - another JVM which takes up nearly 512MB(to see the logs even if driver and exec are done with the job)
 
-
 4. Mesos - Cluster mode, dynamic partitioning i.e. exec can be increased in runtime as per req
 
-Parallelism in MapReduce vs Spark
+===Parallelism in MapReduce vs Spark===
 1. In MapReduce parallelism is achieved with diff processIds i.e. separate JVMs or separate map & reduce tasks
 2. In Spark, parallelism is achieved with executors running concurrent tasks inside them
 3. In MapReduce the slots are hardcoded i.e. fixed for map & fixed for reduce viz if only map tasks are running reduce slots will be seating idle and CPU consumption won't be 100% unlike in spark the executors & their tasks have generic slots where any type of map/reduce/any other op can run
@@ -157,18 +170,67 @@ Ans - databricks -> If you have total 8 CPUs then you think assign 6 to spark ap
 because this 6 CPUs are not hardly assign to the JVM, they are doing whole lot of other OS tasks too
 (doing this has shown inc is performance by 2-3 times)
 
-SPARK_LOCAL_DIRS (spark-env.sh & it's recommended to use separate SSDs alongside OS disk for this)
+===SPARK_LOCAL_DIRS===
+(spark-env.sh & it's recommended to use separate SSDs alongside OS disk for this)
 Is used to spill the data that's don't fit in memory ex. if you load data from S3 and it's not fitting into RAM (exec memory) it will be spilled down into this SPARK_LOCAL_DIRS, if spark needs to access this data it won't need to go back to S3 over network it can simply take it from this local SSDs. Also intermediate shuffled data is also spilled over to this SSDs if not fitting into memory
 (does it cleansup once app execution finished ?)
 
+===Memory management===
+1. recommended to use at most 75% of a machine's memeory for spark
+2. min exec heap size - 8GB
+3. max ecec heap size - max 40-45GB (depends...watch your GC)...if it's open jdk, but there are propriotory JVM implementations, which can handle 100-200GBs
+4. memeory usage is greatly affected by storage level and serialization format
 
+===Storage of RDDs/Caching===
+> .cache() == .persist(MEMEORY_ONLY) (in persist we can pass many things that's all otherwise they are totally same) and this is most CPU efficient option too
+> When cached in JVM, RDD gets stored as a de-serialized java objects. If given MEMEORY_ONLY and RDD isn't fitting into memeory, those partitions will be simply dropped and those dropped partitions will be recomputed again when required.
+> Half of fraction of partition won't be stored, either whole partition will be cahced or full will be dropped
+> If cache is already full and if we try to cache new RDDs and it's not having enough space. spark will start removing oldest RDDs and will start making space for the one we are currently trying to cahce i.e. in LRU(least recently used) fashion 
+> If exec/JVM crashes it won't replicate like it was before crashing neither it will re-cached whatever that earlier JVM had. it can only recover the partitions of current RDD in use of same JVM or on some other exec's JVM.
+> MEMEORY_ONLY_SER = it's space efficient but slows you down as it has to serialize the things and de-serialize back again.
+> MEMEORY_AND_DISK = in deserialized form in memory and if not fitting in memory it will start storing into disk (SPARK_LOCAL_DIRS) in oldest RDD first fashion. In disk it will be always in serialized form and deserialized in memory.
+> In general, rep factor should be 1 it's not HDFS. If partition is lost it will be recovered fastly by spark engine
+> MEMEORY_AND_DISK_SER = serialized in both disk & memory
+> Spilling to disk happens for that particular JVM only i.e If we tried to cache and JVM1 is full then it will spill to disk of JVM1's worker even if other JVM2,JVM3,etc has the memory(RAM). It prefers to cache locally on disk instead sending data b/w exec which is network & I/O op
+> OFF_HEAP (goes into tachyon which needs to be installed on all the spark machines). reduces the GC and even if JVM crashes RDDs will be still there in tachyon.
+tachyon runs outside the exec JVM but in the same machine
+> recommended - if RDD doesn't fit in mem, use MEMEORY_ONLY_SER w/ fast serialization library (kryo). use replication sparingly i.e if you are having web app that requires fast fault recovery then only replicate 
+> Intermediate data is automatically persisted during shuffle operations and this can't be disabled and spark does that deleting on itself when new data needs a space
+> PySpark - stored objects will always be serialized with Pickle library, so it does not matter whether you choose a serialized level.
 
+===Default memory allocation in exec JVM===
+1. spark.storage.memoryFraction = ~60%
+RDD storage - when you call .persist() / .cache() spark will limit this fraction of total JVM heap space for rdd storage
+If you are not caching at all, but you should cache rdds, try giving ~10-20% for this spark.storage.memoryFraction
+2. spark.shuffle.memoryFraction = ~20%
+During shuffle ops, spark will create intermediate buffers for storing shuffle o/p data. These buffers are used to store intermediate results of aggs in addition to buffering data that is going to be directly o/p as a part of the shuffle.
+3. user program = remaining 20% = 100% - spark.storage.memoryFraction - spark.shuffle.memoryFraction
+whennever failure comes try adjusting this %
+spark executes code here in this space. code will use the remaining JVM heap space for it's execution
 
+logs => rdd_0_1 === partition 1 of rdd0
+> Cost of GC is proportional to the number of java objects
 
+===JOBS -> STAGES -> TASKS===
+> Each task takes 1 partition and does ops on it
+> Scheduling process
+1. Once you are done building the DAG i.e the transformations and then when you call an action driver JVM will convert that DAG into stage boundaries (done by DAG scheduler) i.e out of rdd lineage graph it will create stages
+2. Then each of this stages will be submitted to the Task scheduler by DAG scheduler one by one(stages can execute parallely by DAG scheduler)
+3. Then Task scheduler will parallely execute the tasks on executors and will retry failed/straggling tasks
+4. There is 1 Task scheduler per 1 driver JVM
+5. Pipe-lining => putting multiple RDDs in one stages
+Es. let's say we are reading 4 HDFS blocks and then we are doing map & then filter on those 4 blocks, 4 tasks will do that reading from HDFS and then same tasks will do that map and those same will do that filtering...this is pipe-lining
+5. To display the lineage of an RDD we have rdd.toDebugString() method on RDD
+6. Driver JVm can run multiple jobs parallely
+6. No of stage reduction => if job contains 4 stages and stage3 depends on stage1 & stage2 and if stage2 takes 3 min and stage1 takes 17 min...you can really think of moving some business logic so that stage3 can start asap
 
+===Broadcast variables & Accumulators===
+1. To avoid shuffle during joining 2 datasets is to use Broadcast variables & accumulators
+(read more)
+2. BITTORRENT - is peer to peer file sharing protocol
 
+Py4j enables accessing java objects in JVM and we can run java functions in python interpreter as if they were python functions
+Ex. Py4j socket launches actual SparkContect in JVM when we try to create SparkContext through python
 
-
-
-
-
+===PySpark architecture===
+fuddi's 6 hr video from 4:30 - 5:25
