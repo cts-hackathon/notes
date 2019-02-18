@@ -87,7 +87,9 @@ Default partitioning?
 ES-Spark --> https://www.elastic.co/guide/en/elasticsearch/hadoop/master/arch.html
 
 ===Serialization===
-In distributed computing, you generally want to avoid writing data back and forth because it’s expensive. Instead, the common paradigm is to bring your code to your data. This is why many frameworks are based on the JVM, which lets you execute code on the same machine as the data. Serialization is the process of translating this code into an ideally compressed format for efficient transfer over the network. By default, Spark uses the standard Java serializer. However, you can get much faster and more memory-efficient serialization using Kryo serialization. Switching to Kryo can reduce memory pressure on your cluster and improve stability.
+In distributed computing, you generally want to avoid writing data back and forth because it’s expensive. Instead, the common paradigm is to bring your code to your data. This is why many frameworks are based on the JVM, which lets you execute code on the same machine as the data. 
+Serialization is the process of translating this code into an ideally compressed format for efficient transfer over the network. By default, Spark uses the standard Java serializer. However, you can get much faster and more memory-efficient serialization using Kryo serialization. Switching to Kryo can reduce memory pressure on your cluster and improve stability.
+User defined classes needs to implement this kryo serializer properly
 
 What is shuffling and when does it happens...?
 https://0x0fff.com/spark-architecture-shuffle/
