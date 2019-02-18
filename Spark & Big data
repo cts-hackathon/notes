@@ -22,9 +22,9 @@ If a job comes with 10 map, then other 5 map jobs would have to wait in the queu
 In production scenario, it's good to have RM and NameNode on separate machines as they both are masters, but for testing small datasets we can keep them on same machine
 
 RM if not configured has the FIFO scheduler i.e ex if we have 10 nodes in a cluster with 4GB RAM each and assuming 1 map job takes 1GB RAM, if 3-4 ppl come submit 100 map jobs...what will happen, our RAM is 40GB total...req is 100GB, RM will do job scheduling in FIFO manner by default
-but sometimes, this FIFO schedulaer may be efficient from priority perspective....so we have FAIR scheduler and CAPACITY scheduler and this 2 are free apache scheduler which will avoid bottleneck of FIFO shceduler...and we can share resources for all the coming jobs no need to waut
-Cloudera by default - fair scheduler
-Hortonworks by default - capacity scheduler
+but sometimes, this FIFO scheduler may be efficient from priority perspective....so we have FAIR scheduler and CAPACITY scheduler and this 2 are free apache scheduler which will avoid bottleneck of FIFO shceduler...and we can share resources for all the coming jobs no need to waut
+Cloudera by default - Fair scheduler
+Hortonworks by default - Capacity scheduler
 
 https://dzone.com/articles/apache-spark-on-yarn-resource-planning.   --->.    executor calculation
 https://www.linkedin.com/pulse/how-configure-spark-cluster-yarn-artem-pichugin/
@@ -41,8 +41,7 @@ We can decide how much % of cluster memory we can give to spark Ex. if cluster h
 Spark tuts --> https://data-flair.training/blogs/what-is-spark/
 
 JVM shouldn't get more than 45GBs of RAM, otherwise garbage collection won't happen properly.
-some research has shown exec with more than 64GB RAM perform badly with delays in garbage collections
-
+some research has shown exec with more than 64GB RAM perform badly with huge delays in garbage collections
 
 no of cores in spark aren't the actual cores of cpu...Ex. if your machine is 8 core...then if you are planning for 6 cores to spark job...then it should 2-3 fold 6...i.e. 12-18 cores (=tasks inside executor)
 
@@ -60,6 +59,8 @@ how to choose no of executors for job?
 - sending data b/w executors ?...when shuffling happens...join,reduce ops?
 - shuffle will happen when you do repartition, join, cogroup, *by, *byKey ops
 - repartition is coalese with shuffle=true (ShuffledRDD comes out as a result)
+- does serialization happens during shuffling process
+
 #implementation of repartition function
 {
 def repartition(numPartitions: Int)(
@@ -68,8 +69,6 @@ def repartition(numPartitions: Int)(
     }
 }
 - To inc partitions use repartition() & to dec the partitions use coalese()
-
-
 
 Spark job tuning - 
 Part 1 - http://blog.cloudera.com/blog/2015/03/how-to-tune-your-apache-spark-jobs-part-1/
@@ -80,8 +79,7 @@ https://dzone.com/articles/apache-spark-on-yarn-resource-planning
 https://dzone.com/articles/alpine-data-how-to-use-the-yarn-api-to-determine-r?fromrel=true
 https://dzone.com/articles/understanding-optimized-logical-plan-in-spark?fromrel=true
 
-
-blog.cloudera.org -- good resource
+********blog.cloudera.org -- good resource********
 
 Spark on YARN - Cloudera blog --> https://blog.cloudera.com/blog/2014/05/apache-spark-resource-management-and-yarn-app-models/
 
