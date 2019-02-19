@@ -14,6 +14,9 @@ we can run only mapreduce job, nothing else
 If we have 4 slaces of 4GB RAM each, lets say each map job needs 1GB RAM, then if a job comes with 2 map job in that case remaining resource will be wasted i.e 2GB RAM...so basically no resource(RAM, HD, etc) management...Job tracker and task tracker are only related to the job and that too mapreduce job
 If a job comes with 10 map, then other 5 map jobs would have to wait in the queue coz single slave has only 4GB RAM
 
+===Hadoop input splits vs Block size===
+https://stackoverflow.com/questions/17727468/hadoop-input-split-size-vs-block-size
+
 =====How YARN works======
 1. When resource mngr receives job, it will contact any NM(node manager) not necessarily the one which contains the data, then that NM(which was contacted by RM) will start an APPLICATION MASTER which will be per job and will monitor everything related to job from start till end.
 2.Then APP MASTER will contact it's NM and RM to find the actual data on datanodes and then it will launch containers on those perticular datanodes (container is simply Java or JVM process...inside the container your job will get executed)
@@ -235,3 +238,5 @@ Ex. Py4j socket launches actual SparkContect in JVM when we try to create SparkC
 
 ===PySpark architecture===
 fuddi's 6 hr video from 4:30 - 5:25
+
+DStreams are built on Spark RDDs, Spark’s core data abstraction.DStream in Spark signifies continuous stream of data. We can form DStream in two ways either from sources such as Kafka, Flume, and Kinesis or by high-level operations on other DStreams. Thus, DStream is internally a sequence of RDDs.
