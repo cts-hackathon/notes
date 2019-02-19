@@ -240,3 +240,6 @@ Ex. Py4j socket launches actual SparkContect in JVM when we try to create SparkC
 fuddi's 6 hr video from 4:30 - 5:25
 
 DStreams are built on Spark RDDs, Spark’s core data abstraction.DStream in Spark signifies continuous stream of data. We can form DStream in two ways either from sources such as Kafka, Flume, and Kinesis or by high-level operations on other DStreams. Thus, DStream is internally a sequence of RDDs.
+
+RDD vs DataFrame vs DataSets
+https://www.youtube.com/watch?v=_1byVWTEK1s
