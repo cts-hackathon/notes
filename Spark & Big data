@@ -253,3 +253,5 @@ https://www.youtube.com/watch?v=_1byVWTEK1s
 https://www.youtube.com/watch?v=1a4pgYzeFwE
 
 It isn’t true is that the driver memory should be larger than the amount of data being processed. You can run transformations on much larger amounts of data than can be stored on a single node, this is the main reason why Spark is so popular, it is able to distribute the work of processing large datasets in a scaleable way. What is true, however, is that the driver memory should be higher than the amount of data you collect to your driver program.
+
+When there are library conflicts, use maven shading...
