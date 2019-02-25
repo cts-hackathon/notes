@@ -169,6 +169,13 @@ History-server - another JVM which takes up nearly 512MB(to see the logs even if
 
 what is tachyon? (sie in mem, size in tachyon, size on disk)
 
+===https://www.youtube.com/watch?list=PL-x35fyliRwjE2DhodDQARUP0NVKaA_h5&v=WyfHUNnMutg===
+-Shuffle block size shoudn't be greater than 2GBs coz job will fail with this 2GBs limit of shuffle block size. Also, having few partitions will make job slow and you won't be using parallelism properly.
+-Rule of thumb - max size per partitions = 128MB/partition
+-Spark SQL > default number of partitions to use when doing shuffles = 200, which may lead to high shuffle block size as mentioned in 1st point 
+-spark uses diffrent data structure for bookkeeping during shuffles, when # of partitions are less than 2000(magical number) and greater than 2000. so it's recommended to inc the # of partitions if they are close to 2000
+
+
 How to assign cores/exec ?
 Ans - databricks -> If you have total 8 CPUs then you think assign 6 to spark app's exec, but you will gain performance actually when that is 6*2 = 12 (2-3 times of 6)
 because this 6 CPUs are not hardly assign to the JVM, they are doing whole lot of other OS tasks too
