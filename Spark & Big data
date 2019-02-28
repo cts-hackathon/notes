@@ -273,4 +273,13 @@ Ex. xxxx.filter($"col" === "val").count => 1 Task
       |            |
   shuffle write   --
 
+> Task deserialization time in event timeline is basically the time required to deserialized the data in memory (if stored in memory it will be tungsten binary decocoding)
 
+Healthy partition size for in memory caching is 50-200MB
+
+spark.sql.shuffle.partitions = 200 ==> default partitions when shiffling data for joins or aggregations (this is in spark1.6 and this will be kept dynamic in spark 2.1 i.e.it will look for the data and will do adaptive shuffling to decide whether it's 200 or 500 or 1000
+
+Having too many partitions/tasks will also end up slow performance coz driver is gonna take up time in scheduling those small small tasks i.e scheduler delays and all
+
+Skipped meaning -> spark reads from the internally stored shuffle files which it keeps temporarily and deletes after sometime.
+Ex. Let's say you are trying to count the records in a file of 255MB. It will read in  partitions i.e 64MB, 64MB, 64MB, 58MB...then it will count records in each partition and it will store the record count of each partition in memoery or local SSD...then next time you try to count records, it won't again read file, it will simple read that shuffled count of 4 partitions
