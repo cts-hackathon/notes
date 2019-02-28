@@ -260,3 +260,17 @@ How to in spark by Cloudera?
 https://www.cloudera.com/developers/how-tos/apache-spark-how-tos.html
 
 ===PySpark architecture and how it works?===
+
+When we cache something ex. sql dataframes it stores in tungsten binary format which uses columnar compression using some encoding which isn't similar to java serialization/deserialization. Whenever you are usign dataframes,datasets,sql it always uses tungsten compression. Tungsten binary format doesn't store data as java objects in memory it uses some encoding technique.
+
+Inside task what really happens is the pipeline executions.
+Ex. xxxx.filter($"col" === "val").count => 1 Task
+   .filter()      --
+      |            |
+      |            |
+  .aggregate()     >  Pipelining in single Task
+      |            |
+      |            |
+  shuffle write   --
+
+
