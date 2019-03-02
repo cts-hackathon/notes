@@ -291,3 +291,7 @@ https://medium.com/@mukeshkumar_46704/getting-streaming-data-from-kafka-with-spa
 DataFrames API and SQL query in spark gives same performance for the same particular task you are planning because it creates same logical/optimized plan via catalyst optimizer
 
 Don't write UDF if you can use sql built-in function because spark sometimes cannot do the optimizations for UDF which it does for built-in functions
+
+RDDs store data in memory in serialized/deserizlized format
+Dataframes/Datasets store data in memory in tungsten binary format
+Converting dataframe to RDD is very costly operation and the cost involved is due to the conversion of tungsten binary format to serialized/deserialized format i.e from columnar representation to Row representation
