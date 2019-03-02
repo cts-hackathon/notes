@@ -299,6 +299,5 @@ similary, RDD to dataframe is equally costly due to same conversion of deseriali
 
 Predicate pushdown - can't be done with CSV, JSON but can be done with RDBMS,Parquet, Cassandra,etc 
 Ex. We can extract rows from RDBMS/Parquet with WHERE clause which we can't do in CSV or JSON or HDFS where we have to read all the data into memory and then do the filtering
-
-
+Column pruning - selecting particular columns while reading itself.
 
