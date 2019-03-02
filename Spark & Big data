@@ -283,3 +283,9 @@ Having too many partitions/tasks will also end up slow performance coz driver is
 
 Skipped meaning -> spark reads from the internally stored shuffle files which it keeps temporarily and deletes after sometime.
 Ex. Let's say you are trying to count the records in a file of 255MB. It will read in  partitions i.e 64MB, 64MB, 64MB, 58MB...then it will count records in each partition and it will store the record count of each partition in memoery or local SSD...then next time you try to count records, it won't again read file, it will simple read that shuffled count of 4 partitions
+
+PySpark streaming
+https://medium.com/@kass09/spark-streaming-kafka-in-python-a-test-on-local-machine-edd47814746
+https://medium.com/@mukeshkumar_46704/getting-streaming-data-from-kafka-with-spark-streaming-using-python-9cd0922fa904
+
+
