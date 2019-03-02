@@ -288,4 +288,4 @@ PySpark streaming
 https://medium.com/@kass09/spark-streaming-kafka-in-python-a-test-on-local-machine-edd47814746
 https://medium.com/@mukeshkumar_46704/getting-streaming-data-from-kafka-with-spark-streaming-using-python-9cd0922fa904
 
-
+DataFrames API and SQL query in spark gives same performance for the same particular task you are planning because it creates same logical/optimized plan via catalyst optimizer
