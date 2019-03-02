@@ -295,3 +295,4 @@ Don't write UDF if you can use sql built-in function because spark sometimes can
 RDDs store data in memory in serialized/deserizlized format
 Dataframes/Datasets store data in memory in tungsten binary format
 Converting dataframe to RDD is very costly operation and the cost involved is due to the conversion of tungsten binary format to serialized/deserialized format i.e from columnar representation to Row representation
+similary, RDD to dataframe is equally cosrtly due to same conversion of serialized/deserialized format to tungsten binary format
