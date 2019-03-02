@@ -296,3 +296,9 @@ RDDs store data in memory in deserizlized format (if we read back from memory we
 Dataframes/Datasets store data in memory in tungsten binary format
 Converting dataframe to RDD is very costly operation and the cost involved is due to the conversion of tungsten binary format to deserialized format i.e from columnar representation to Row representation
 similary, RDD to dataframe is equally costly due to same conversion of deserialized format to tungsten binary format
+
+Predicate pushdown - can't be done with CSV, JSON but can be done with RDBMS,Parquet, Cassandra,etc 
+Ex. We can extract rows from RDBMS/Parquet with WHERE clause which we can't do in CSV or JSON or HDFS where we have to read all the data into memory and then do the filtering
+
+
+
