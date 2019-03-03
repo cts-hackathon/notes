@@ -301,3 +301,10 @@ Predicate pushdown - can't be done with CSV, JSON but can be done with RDBMS,Par
 Ex. We can extract rows from RDBMS/Parquet with WHERE clause which we can't do in CSV or JSON or HDFS where we have to read all the data into memory and then do the filtering
 Column pruning - selecting particular columns while reading itself.
 
+Motivation for stable spark streaming app is to have system which can process data as fast as streaming. In micro-batch model of spark it means finish previous batch processing before next batch arrives
+Ex. In streaming when we are getting RDDs evevry 5 secs, we should be processing it within 5 secs, otherwise after sometime we would be waiting for minutes or hours to process RDDs
+
+In Spark v1.6 we get RDD from streams, but in Spark v2.0 we will be getting dataframes from streams
+In case of streaming, older receiver based technology was permanently blocking cores/tasks for streaming data as it has to keep streaming data.
+
+DStream is simply flow of RDDs, if we do any transformation on DStream it will be applicable to the RDDs inside
