@@ -7,3 +7,38 @@ Hashing of key can give same result for two different keys, so be careful while 
 Serializer and Deseria;izer
 When you write custom serializer/deserizlizer, if you change object schema for which you have written the serializer/deserizlizer then you have to change serializer/deserizlizer also coz it has to understand the new object but this was we won't be able to read old data after changing serializer/deserizlizer
 To avoid above problem use Generic serializer/deserizlizer i.e. Avro
+
+Producer configs
+1.acks
+0 = no acknowledgement from Leader i.e fire & forget
+1 = acknowledgement from leader but no guarantee if follwer copied from leader or not
+all = acknowledgement from leader when follower copied the msg from leader, this method will give high latency
+2.retries
+3.max.in.flight.requests.per.connection
+if you are using async send then this param will tell how many req/msg can be send without waiting for response. this may disturb msg order coz if 1st batch fails it will go for 2nd batch, then it will retry 1st one. To maintain order use sync send and set max.in.flight.requests.per.connection = 1
+
+Consumer group 
+If your multiple producers sending data to single topic at a moderate rate then we can have 1 consumer, but if there are lots of producers and they are sending data to a topic at very high speed, then we must have multiple consumers to read that properly partitioned topic where each consumer can read from 1 partition. Kafka allows only 1 consumer to read from 1 partition coz if 2 consumer start reading from same partition it will lead to msg duplicacy i.e max number of consumers in a consumer group equals to the no of partitions of a topic
+There are many things associated with the consumer's entry/exit into/from consumer group.
+when new consumer joins it shoudl get a partition to read, when it falls down other consumer should take care of reading the partition assigned to that consumer, when it again joins back group again a partition should be given to it for reading.
+This is done by group coordinator i.e. one of the kafka brokers is elected as a group coordinator. when consumer wants to join a group it send req to coordinator. First consumer to join the group becomes the leader and remaining becomes the member of the group
+Coordinator is responsible for managing the list of group member. Whenever new consumer joins or someone exits from group coordinator will find a need to do "partition rebalancing" and leader will do the actual rebalancing and will send new partition assignment to the coordinator and coordinator will communicate new assignment to consumers.
+during rebalancing none of the consumer is allowed to read any message from topic/partition
+
+kafka offsets
+watch offset management 7 rebalance listener tut of learning journal
+1. Current offset
+when consumer polls for the data, kafka will keep moving the current offset so that we don't get duplicate record
+2. Commited offset
+Let's say Consumer1 processed soeme records, then it can commit offset on the record where it processed last record. Doing this we can avoid, reading same record again even if rebalncing happens coz we have commited offfset
+How to commit offset?
+1.Auto commit
+enable.auto.commit 
+auto.commit.interval.ms
+2.Manual commit
+commit sync
+commit async - won't retry and shoudn't retry
+
+
+
+
