@@ -1,1 +1,9 @@
 ===================apache kafka notes===================
+watch 23 tutorials of learning journal
+
+Default partitioner vs Custom partitioner --> learning journal tuts
+Hashing of key can give same result for two different keys, so be careful while using partitioner with key hashing
+
+Serializer and Deseria;izer
+When you write custom serializer/deserizlizer, if you change object schema for which you have written the serializer/deserizlizer then you have to change serializer/deserizlizer also coz it has to understand the new object but this was we won't be able to read old data after changing serializer/deserizlizer
+To avoid above problem use Generic serializer/deserizlizer i.e. Avro
