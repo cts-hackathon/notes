@@ -1,6 +1,9 @@
 ===================apache kafka notes===================
 watch 23 tutorials of learning journal
 https://github.com/LearningJournal/ApacheKafkaTutorials - all source code
+https://www.cloudera.com/documentation/kafka/latest/topics/kafka_command_line.html
+https://dzone.com/articles/kafka-producer-and-consumer-example
+
 kafka is a messaging system where publishers = producers and subscribers = consumers
 
 Kafka cluster consists of brokers and zookeeper
