@@ -1,5 +1,6 @@
 ===================apache kafka notes===================
 watch 23 tutorials of learning journal
+https://github.com/LearningJournal/ApacheKafkaTutorials - all source code
 
 Default partitioner vs Custom partitioner --> learning journal tuts
 Hashing of key can give same result for two different keys, so be careful while using partitioner with key hashing
