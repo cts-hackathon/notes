@@ -1,8 +1,0 @@
->>Mocking frameworks(Mockito) are used in collaboration with the unit testing frameworks (JUnit)
-
->>Mocking
-
->>Jetty : Servlet tester...only test for the servlets...we have various lib of jetty with different methods available for testing 
-
->>Annotations
-
