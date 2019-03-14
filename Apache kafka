@@ -89,6 +89,8 @@ auto.commit.interval.ms
 commit sync
 commit async - won't retry and shoudn't retry
 
+kafka details
+https://medium.com/@durgaswaroop/a-practical-introduction-to-kafka-storage-internals-d5b544f6925f
 
 
 
