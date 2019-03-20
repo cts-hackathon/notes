@@ -135,4 +135,6 @@ Follow those 4 rules in your interface, and you have a REST API.
 Unfortunately, many interfaces that label themselves as “REST” are actually something else (“HTTP interfaces”), because they don't follow all of the rules. Rules 2 and 4 are often violated, but it's not entirely uncommon to see rule 1 being violated as well. For those developers, “REST” simple means “we didn't do the XML messages thing”.
 
 This is why REST interfaces that follow all four rules are now often called “hypermedia APIs”, referring to the fourth rule.
+
+Web services based on REST Architecture are known as RESTful web services
 =======REST API ends=======
