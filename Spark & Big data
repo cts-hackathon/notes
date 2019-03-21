@@ -323,6 +323,18 @@ If your spark job is slow, Inspect following areas
 1. Scheduling & launching task might be slow
 (Use broadcast variables for large objects, Spark will warn you about this)
 2. Execution time may be more
+(If you have unnecessarily lareg number of tasks, then it takes time to launch those tasks and slows the execution)
 3. Shuffling b/w stages taking more time
 (spark writes shuffle data at spark.local.dir)
 4. Collecting result / writing results taking time
+
+====================ADVANCE PROFILING====================
+1.JVM utilities
+jstack <pid>  --> jvm stack trace
+jmap -histo:live <pid>  --> heap memory
+
+2.System utilities
+dstat  --> disk stats
+iostat  --> io & cpu stats
+lsof -p <pid>  --> tracks open files
+
