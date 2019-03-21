@@ -308,3 +308,5 @@ In Spark v1.6 we get RDD from streams, but in Spark v2.0 we will be getting data
 In case of streaming, older receiver based technology was permanently blocking cores/tasks for streaming data as it has to keep streaming data.
 
 DStream is simply flow of RDDs, if we do any transformation on DStream it will be applicable to the RDDs inside
+
+To show data on spark web UI, spark has loads of Listeners which collects data from all the tasks and make it available for UI. This Listeners puts lots of pressure on the driver JVM as it collects all the data. If you disable the spark.ui.enabled there might be some performance gain.
