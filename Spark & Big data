@@ -317,3 +317,12 @@ SparkContext starts LiveListenerBus and this LiveListenerBus lives in the driver
 
 HOW JOB GETS DIVIDED INTO STAGES ?
 Basic thumbrule is if there is no shuffle involved between RDDs then they will go into one stage, whenever shuffle is triggered a new stage will be created
+Inside stage --> no of tasks created = no of partitions of an RDD given to the stage
+
+If your spark job is slow, Inspect following areas
+1. Scheduling & launching task might be slow
+(Use broadcast variables for large objects, Spark will warn you about this)
+2. Execution time may be more
+3. Shuffling b/w stages taking more time
+(spark writes shuffle data at spark.local.dir)
+4. Collecting result / writing results taking time
