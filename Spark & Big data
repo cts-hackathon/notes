@@ -374,3 +374,6 @@ If your tasks are seating idle then it's good to do coalesce() and then perform 
 When caching if you use MEMORY_ONLY it stores java objects in deserialized form becuase the java objects are already there in the memory, but this can cause GC issues so use MEMORY_ONLY_SER which can cut down GC time
 
 Max executor heap size = 64GB
+
+LZF compression can improve shuffle performance -> conf.set("spark.io.compression.codec", "lzf")
+turn on speculative execution to help prevent stragglers -> conf.set("spark.speculation", "true")
