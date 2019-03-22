@@ -338,3 +338,39 @@ dstat  --> disk stats
 iostat  --> io & cpu stats
 lsof -p <pid>  --> tracks open files
 
+SparkContext is hosted by Spark driver
+Spark driver will become bottleneck, if there are too many tasks because driver only schedules all this tasks
+
+Dynamic executor allocation
+1. When task queue contains lots of tasks queued, we can ask driver to launch the executors dynamically.
+2. When the task queue is less and executors are idle, then those resources will be released
+3.Following are the params involved
+spark.dynamicAllocation.enabled
+spark.dynamicAllocation.executorIdleTimeout
+spark.dynamicAllocation.maxExecutors
+spark.dynamicAllocation.minExecutors
+
+Spark scheduler arch is event driven, Event processor is single threaded and Facebook has submitted a pull request for multi threaded event listener
+
+Facebook 60TB use case - https://code.fb.com/core-data/apache-spark-scale-a-60-tb-production-use-case/
+
+Tools
+1.Flame graph
+2.Facebook's Scuba - Task level matrics
+
+Narrow vs Shuffled/Wide dependencies 
+Narrow - if RDD1 has 100 partitions and RDD2 is transformed from RDD1 and RDD2 also has 100 partitions, then it's narrow dependency. 
+Shuffle/wide dependencies are mainly in case of shuffling op
+
+Shuffle read vs write
+When stage reads from prev stage it's called shuffle read and when stage writes data for next stage it's called shuffle write i.e value of shuffle read & write for consecutive stages are same 
+
+Shuffle - transfer of data b/w stages
+
+Use aggragateByKey() rather than using own aggregations
+
+If your tasks are seating idle then it's good to do coalesce() and then perform tasks
+
+When caching if you use MEMORY_ONLY it stores java objects in deserialized form becuase the java objects are already there in the memory, but this can cause GC issues so use MEMORY_ONLY_SER which can cut down GC time
+
+Max executor heap size = 64GB
