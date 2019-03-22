@@ -139,7 +139,7 @@ SPARK_DAEMON_MEMORY = actually mem for spark-master & worker daemons
 
 3. Yarn - Cluster mode, dynamic partitioning i.e. exec can be increased in runtime as per req 
 ResourceManager basically keeps track of cores free, mem available, network bandwidth, etc on NodeManager with heartbeats
-When client submits app to ResourceManager, it will contact NodeManager for the req resources and will launch App-master on one of them, then that App-master will communicate back to ResourceManager for the resources it need t actually excute the job i.e. it will ask ResourceManager to give up some NodeManager so that App-master can launch the containers (in which executors  will run). once that's done App-master don't need to communicate with ResourceManager i.e. even if ResourceManager crashes App-master can still continue with jobs only it won't be able request more resources as ResourceManager has crashed.
+When client submits app to ResourceManager, it will contact NodeManager for the req resources and will launch App-master on one of them, then that App-master will communicate back to ResourceManager for the resources it need to actually excute the job i.e. it will ask ResourceManager to give up some NodeManager so that App-master can launch the containers (in which executors  will run). once that's done App-master don't need to communicate with ResourceManager i.e. even if ResourceManager crashes App-master can still continue with jobs only it won't be able request more resources as ResourceManager has crashed.
 ResourceManager contains scheduler + Apps-master (Apps-master launches crashed App-master)
 In YARN mode also we can have TWO MODES client & cluster mode
 1. Client mode (scale-shell/python-shell mainly) - driver runs on client machine (ur laptop, App-master is the yarn-App-master which launches yarn-containers which then launches executors inside those containers)
@@ -274,7 +274,7 @@ Ex. xxxx.filter($"col" === "val").count => 1 Task
       |            |
   shuffle write   --
 
-> Task deserialization time in event timeline is basically the time required to deserialized the data in memory (if stored in memory it will be tungsten binary decocoding)
+> Task deserialization time in event timeline is basically the time required to deserialized the data in memory (if stored in memory it will be tungsten binary encoding)
 
 Healthy partition size for in memory caching is 50-200MB
 
