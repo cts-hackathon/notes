@@ -76,11 +76,11 @@ Coordinator is responsible for managing the list of group member. Whenever new c
 during rebalancing none of the consumer is allowed to read any message from topic/partition
 
 kafka offsets
-watch offset management 7 rebalance listener tut of learning journal
+watch offset management & rebalance listener tut of learning journal
 1. Current offset
 when consumer polls for the data, kafka will keep moving the current offset so that we don't get duplicate record
 2. Commited offset
-Let's say Consumer1 processed soeme records, then it can commit offset on the record where it processed last record. Doing this we can avoid, reading same record again even if rebalncing happens coz we have commited offfset
+Let's say Consumer1 processed some records, then it can commit offset on the record where it processed last record. Doing this we can avoid, reading same record again even if rebalncing happens coz we have commited offfset
 How to commit offset?
 1.Auto commit
 enable.auto.commit 
