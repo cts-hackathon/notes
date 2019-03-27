@@ -115,3 +115,37 @@ There are 7 data types in javascript
 
 Cloning vs Deep cloning of objects (use lodash methods for deep cloning)
 
+Garbage collection javascript
+Memory management in JavaScript is performed automatically and invisibly to us
+setting object = null...free ups the memory
+https://javascript.info/garbage-collection
+Symbol is a primitive type for unique identifiers.
+Symbols are created with Symbol() call with an optional description.
+
+Arrow functions have no “this”
+Arrow functions are special: they don’t have their “own” this. If we reference this from such a function, it’s taken from the outer “normal” function
+
+The special primitives null and undefined are exceptions and have no methods
+
+JSON.stringify to convert objects into JSON.
+JSON.parse to convert JSON back into an object
+JSON.stringify can be applied to primitives as well
+// a number in JSON is just a number
+alert( JSON.stringify(1) ) // 1
+// a string in JSON is still a string, but double-quoted
+alert( JSON.stringify('test') ) // "test"
+alert( JSON.stringify(true) ); // true
+alert( JSON.stringify([1, 2, 3]) ); // [1,2,3]
+
+JSON is data-only cross-language specification, so some JavaScript-specific object properties are skipped by JSON.stringify
+let user = {
+  sayHi() { // ignored
+    alert("Hello");
+  },
+  [Symbol("id")]: 123, // ignored
+  something: undefined // ignored
+};
+alert( JSON.stringify(user) ); // {} (empty object)
+
+=====Custom “toJSON”======
+Like toString for string conversion, an object may provide method toJSON for to-JSON conversion. JSON.stringify automatically calls it if available.
