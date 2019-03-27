@@ -110,3 +110,8 @@ class Member extends User{
 Map {"key1" => "value1", "key2" => "value2"}
 
 13. Promises --> Replacement for callbacks
+
+There are 7 data types in javascript
+
+Cloning vs Deep cloning of objects (use lodash methods for deep cloning)
+
