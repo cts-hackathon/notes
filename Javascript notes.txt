@@ -211,3 +211,10 @@ var myCar = new Car(50, "white");
 AJAX is non-blocking...it's not multi-threading
 
 >>>Closures & Promises in javascript...
+
+Promises are wrappers around async functions
+Ex. let p = new Promise((resolve, reject) => {
+	setTimeout(function(){
+		resolve("resolved");
+	}, 1000)
+});
