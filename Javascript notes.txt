@@ -1,0 +1,112 @@
+languages like javascript, jscript, actionscript follow ECMAScript standards & specifications
+ES5 = ES2009
+ES6 = ES2015
+Lexical(local) scoping => scopes in block
+Ex. {
+    var x = 10
+}
+above var x has scope between {}
+
+const can be changed if scope is changes
+Ex. 
+`
+const pi = 3.142
+pi = 10 //not possible
+const pi = 10 //not possible
+func = function(){
+    const pi = 10 //possible
+}
+`
+
+ES6 Features
+1. let 7 const keyword
+2. default params
+function func(num=10){
+
+}
+3. Spread operator
+var a1 = [1,2,3]
+var a2 = [a1,4,5,6]
+a2 ==> [[1,2,3],4,5,6]
+
+var a3 = [...a1,4,5,6] ==> a3 = [1,2,3,4,5,6]
+4.Template Strings - looks elegant
+`abc dtrct ${<your_variable/expression>}`
+5.New String methods were introduced 
+Ex. repeat, startsWith, endsWith, includes, etc
+6.Object literal improvements
+var ninja = {            var ninja = {
+    name : name              name,
+    belt : belt   -->        belt
+}                        }
+7.Fat arrow functions ==> allows to bind "this" lexically
+a.bind this 
+var obj = {
+    name : "abc",
+    func(){
+        window.setInterval(function(){
+            console.log(this.name)      ----> won't log anything coz "this" refers to function passed to window.setInterval
+        }, 1000)
+    }
+}
+
+above prob can be solved by 
+var obj = {
+    name : "abc",
+    func(){
+        var _this = this;
+        window.setInterval(function(){
+            console.log(_this.name)      ----> now its referring to the "obj" & will log "abc"
+        }, 1000)
+    }
+}
+
+BUT INSTEAD OF ABOVE USE FAT ARROW function
+var obj = {
+    name : "abc",
+    func(){
+        var _this = this;
+        window.setInterval(() => {
+            console.log(this.name)      ----> now its referring to the "obj" & will log "abc" only
+        }, 1000)
+    }
+}
+
+8.Sets - new Data structure to store unique values
+var s = new Set()
+9.Generators - func that can be play & pause by us
+function* generator(){
+    //definition of generator
+}
+as this returns an "iterator"...can be used to loop through
+
+###Javascript executes from left to right...explained as follows###
+Ex. yield console.log(x);  -> it will console.log and then yield will execute which stops the execution of generator
+
+10. static keyword for class...no need to instanciate where we need object creation in order to call other methods
+class User{
+    constructor(name){
+        this.name = name
+    }
+
+    static noOfUsers(){
+        console.log("Returning users");
+    }
+}
+
+User.noOfUsers()
+
+11. extends keyword
+
+class Member extends User{
+    constructor(name, type){
+        super(name);
+        this.type = type;
+    }
+}
+
+12. Map - new data structure, key-value based structure
+
+Map {"key1" => "value1", "key2" => "value2"}
+
+13. Promises --> Replacement for callbacks
