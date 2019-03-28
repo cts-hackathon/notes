@@ -218,3 +218,6 @@ Ex. let p = new Promise((resolve, reject) => {
 		resolve("resolved");
 	}, 1000)
 });
+
+
+callback hell = terminology used
