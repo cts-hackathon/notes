@@ -233,3 +233,4 @@ In promise we ultimately do callbacks in .then()
 
 Async-await (layer of syntax over promise+generator)
 1.next to await there has to be promise always
+2.now we can use try/catch & for/while constructs inside async-await function
