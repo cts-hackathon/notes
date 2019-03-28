@@ -225,4 +225,4 @@ concurrency - multiple tasks running at same time
 
 Synchronous vs Asynchronous 
 Languages like ruby, python, etc handles things synchrounously and that's why they are multi threaded otherwise if single threaded that single thread would be blocked i.e each thread work synchronously.
-As Javascript is single threaded does thing asynchrounously
+In Javascript, single threaded does thing asynchrounously
