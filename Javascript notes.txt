@@ -223,6 +223,9 @@ Ex. let p = new Promise((resolve, reject) => {
 callback hell = terminology used
 concurrency - multiple tasks running at same time
 
-Synchronous vs Asynchronous 
+Synchronous(blockong) vs Asynchronous(non-blocking or event-loop) 
 Languages like ruby, python, etc handles things synchrounously and that's why they are multi threaded otherwise if single threaded that single thread would be blocked i.e each thread work synchronously.
 In Javascript, single threaded does thing asynchrounously
+Ex. In javascript you can block things by alert/prompt where every other execution will be block i.e 1 single thread will be blocked
+
+Promises are thin wrapper around callbacks
