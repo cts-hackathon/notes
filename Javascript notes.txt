@@ -230,3 +230,6 @@ Ex. In javascript you can block things by alert/prompt where every other executi
 
 Promises are thin wrapper around callbacks
 In promise we ultimately do callbacks in .then()
+
+Async-await (layer of syntax over promise+generator)
+1.next to await there has to be promise always
