@@ -229,3 +229,4 @@ In Javascript, single threaded does thing asynchrounously
 Ex. In javascript you can block things by alert/prompt where every other execution will be block i.e 1 single thread will be blocked
 
 Promises are thin wrapper around callbacks
+In promise we ultimately do callbacks in .then()
