@@ -235,4 +235,7 @@ Async-await (layer of syntax over promise+generator)
 1.next to await there has to be promise always
 2.now we can use try/catch & for/while constructs inside async-await function
 3.await promise pauses the execution exactly like generator yield (as async await is implementation of promise + generator)
-4. 
+4.async function always return a promise i.e you can await async function
+5.Promise.all() can be used with async-await Ex. await Promise.all(list_of_promises)
+6.Using await in map/filter might not do what you expect!
+7.You can use async-await in chrome,firefox,node and for rest use babel
