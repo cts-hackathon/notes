@@ -1,6 +1,7 @@
 languages like javascript, jscript, actionscript follow ECMAScript standards & specifications
 ES5 = ES2009
 ES6 = ES2015
+Javascript is by default non-blocking i.e. it won't wait for async processes hence we need to "await" for async ops. As javascript keeps async task aside on queue by using async-await we are forcefully asking it to wait
 Lexical(local) scoping => scopes in block
 Ex. {
     var x = 10
@@ -231,7 +232,7 @@ Ex. In javascript you can block things by alert/prompt where every other executi
 Promises are thin wrapper around callbacks
 In promise we ultimately do callbacks in .then()
 
-Async-await (layer of syntax over promise+generator)
+Async-await (layer of syntax over promise+generator..introduced in ES7)
 1.next to await there has to be promise always
 2.now we can use try/catch & for/while constructs inside async-await function
 3.await promise pauses the execution exactly like generator yield (as async await is implementation of promise + generator)
@@ -239,3 +240,20 @@ Async-await (layer of syntax over promise+generator)
 5.Promise.all() can be used with async-await Ex. await Promise.all(list_of_promises)
 6.Using await in map/filter might not do what you expect!
 7.You can use async-await in chrome,firefox,node and for rest use babel
+
+==========CommonJS==========
+1.exports-require functionality was provided by commonjs
+2.modular development came into picture as we can divide code using exports-require
+3.CommonJS is a specification and we need some loaders like SystemJS, RequireJS & so on to implement it
+4.RequireJS, SystemJS are the module loaders
+5.CommonJS is one of the formats to load the JS modules using exports-require, there are other module loading formats Ex.AMD,ECMAScriptModule(esm),Global shim module format(global),etc
+AMD,UMD do more than CommonJS
+
+=====Closure=====
+A closure is an inner function which has access to outer function's variable, outer functions parameters, it's own variable, global variables too. 
+Closure is created by adding function inside another function
+
+Javascript primitive vs ref data types
+1. Primitives - String, Number, Boolean, Undefined, None, Symbols => stored on STACK (fast to access but low memory compare to heap)
+2. Ref - Objects, Arrays => stored on HEAP (slow to access but high memory compare to stack)
+3. Heap is randomly stored in memory but the address/pointer is stored on stack only
