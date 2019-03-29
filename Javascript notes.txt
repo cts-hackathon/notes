@@ -257,3 +257,11 @@ Javascript primitive vs ref data types
 1. Primitives - String, Number, Boolean, Undefined, None, Symbols => stored on STACK (fast to access but low memory compare to heap)
 2. Ref - Objects, Arrays => stored on HEAP (slow to access but high memory compare to stack)
 3. Heap is randomly stored in memory but the address/pointer is stored on stack only
+
+async-await as the name suggest when there is async you need to wait
+as JS is non-blocking i.e it doesn't wait for async
+Async calls will be executed totally after all sync calls 
+fetch() api return promise
+With async await, code looks sync in async world coz its waiting
+JS single thread = single call stack = one thing at a time
+Event loop triggers when the call stack becomes empty and when it triggers it loads tasks from task queue one by one 
