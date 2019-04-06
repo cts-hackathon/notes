@@ -4,3 +4,20 @@
 
 >>>Virtual DOM(react's DOM in js format viz is really fast) representation of actual DOM(very slow), while re-rendering it will compare the old virtual DOM and new virtual DOM...and then only re-render the changes. 
 
+npx vs npm 
+npx - npm package runner - doesn't download the package
+npm - downloads package and then we use it 
+
+Types of components
+1. Stateless/Functional/Dumb/Presentation comp
+>this is not available
+>return only html i.e. jsx
+>we might wonder that when we import React in function comps, React isn't actually gets used...no...
+Ex. return (<h1>Hello world</h1>) ---> return (React.createComponent(h1, null, 'Hello world'))
+2. StateFul/Class/Smart/Container comp
+
+
+props vs state
+1.props - passed from outside the comp
+props are immutable i.e inside comp we cannot do props.name = 'abc'
+2.state - managed by comp and private to the comp  
