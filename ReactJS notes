@@ -37,3 +37,12 @@ JSX concept
 setState() is async method so we can pass callback to the setState() ex. setState({count : 1}, () => {.....}) if we want to execute that after state has been set
 when you want to update state based on prev state or props pass function (this fucntion has access to previou state and props) to setState((prevState, props) => ({count : prevState.count + 1}))
 
+Destructuring the props & state
+1. const obj = {name : "abc", age : 12}
+const {name, age} = obj
+In fucntional comp we do destructuring outside return and in class inside render() & just outisde return
+
+Binding event handlers --> watch 14th video of ReactJS 43 
+
+List rendering --> MUST watch video 17th, 18th, 19th video of ReactJS 43 
+
