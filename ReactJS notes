@@ -46,3 +46,9 @@ Binding event handlers --> watch 14th video of ReactJS 43
 
 List rendering --> MUST watch video 17th, 18th, 19th video of ReactJS 43 
 
+What is babel and babel presets ?
+1.a preset is a set of plugins used to support particular language features Ex. JSX of react needs to be converted to the ES5 javascript
+https://www.fullstackreact.com/articles/what-are-babel-plugins-and-presets/
+
+How webpack works ? --> https://medium.com/ag-grid/webpack-tutorial-understanding-how-it-works-f73dfa164f01
+In order to use Babel, we need to use the Babel Loader. Loaders are how Webpack can process content other than JavaScript. With Loaders we can get Webpack to process many types of files — CSS, Images, TypeScript and ES2015 code and so on.
