@@ -265,3 +265,17 @@ fetch() api return promise
 With async await, code looks sync in async world coz its waiting
 JS single thread = single call stack = one thing at a time
 Event loop triggers when the call stack becomes empty and when it triggers it loads tasks from task queue one by one 
+
+<script src="file.js">
+  alert(1); // the content is ignored, because src is set
+</script>
+
+Logical operators 
+The OR || operator does the following:
+>Evaluates operands from left to right.
+>For each operand, converts it to boolean. If the result is true, stops and returns the original value of that operand.
+>If all operands have been evaluated (i.e. all were false), returns the last operand.
+>A value is returned in its original form, without the conversion.
+>In other words, a chain of OR "||" returns the first truthy value or the last one if no such value is found.
+>The rules above are similar to OR for AND. The difference is that AND returns the first falsy value while OR returns the first truthy one.
+
