@@ -52,3 +52,5 @@ https://www.fullstackreact.com/articles/what-are-babel-plugins-and-presets/
 
 How webpack works ? --> https://medium.com/ag-grid/webpack-tutorial-understanding-how-it-works-f73dfa164f01
 In order to use Babel, we need to use the Babel Loader. Loaders are how Webpack can process content other than JavaScript. With Loaders we can get Webpack to process many types of files — CSS, Images, TypeScript and ES2015 code and so on.
+
+
