@@ -12,3 +12,39 @@ Node setup --> https://www.digitalocean.com/community/tutorials/how-to-install-n
 **Setup prod node app -- https://www.digitalocean.com/community/questions/how-to-run-node-js-server-with-nginx
 ** SSL nginx --> https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04(not used yet)
 ** SSL nginx --> used this method --> https://www.youtube.com/watch?v=m9aa7xqX67c
+
+Node.js (JS runtime env) vs Nginx (async web server)
+1.https://www.educba.com/node-js-vs-nginx/
+2.Node.js is a JS runtime environment which is also an HTTP server with some event-driven features and has many drawbacks in terms of concurrency and high load or user requests to handle a large number of users concurrently
+3.https://stackoverflow.com/questions/16770673/using-node-js-only-vs-using-node-js-with-apache-nginx
+4.There are several good reasons to stick another webserver in front of Node.js
+5.Apache and Nginx are both HTTP servers. They can serve static files like (.jpg and .html files) or dynamic pages (like a Wordpress blog or forum written in a language like PHP or Python). Apache/nginx need to be configured to recognize the URLs that users will be requesting and route them to the right place.
+So, for example, with a typical PHP site (like a Wordpress blog) you tell Apache that any file that ends with .php should be interpreted as PHP code, so when the user visits "http://myblog.com/tag.php?q=mytag", for example, Apache will launch the PHP interpreter to read the file and process it into an HTML page. As part of this process, PHP may talk to a MySQL database and use that to generate the page. Lastly, PHP gives the final HTML code to Apache to send to the user's browser.
+So, far so good?
+**************************Now, Node is a bit different. It's a programming environment like PHP that lets you talk to database, make dynamic pages, etc. However, it differs in that it includes an HTTP server. That means that it can actually act completely on its own without nginx or Apache. You can just run Node and it will be the HTTP server and also the "app server" (which actually creates your dynamic pages and talks to the DB).**************************
+It's a two for one deal.
+Last thing to know is that when people actually deploy Node on the internet, they sometimes put another HTTP server like nginx in front of Node. That means that when a user loads a page, it first hits Nginx which can make a decision about where to route the request. This is handy if you have a big site and need to run many Node instances to handle all your traffic. This way, the single nginx server can split the work to be done among many Node.js "app servers".
+I necessarily simplified things here and there, but this is the general idea. Hopefully, this all made sense and I answered your question in there somewhere.
+6.First of all let's discuss Apache vs Nginx. The Apache HTTP server and NGINX are the two most popular open source web servers but they are different in there architecture.
+Apache
+Apache's architecture simplicity : 
+Apache debuted in 1995 and in those days the web pages were very simple and the traffic was very low.
+Apache's architecture was pretty simple for each new request a new process of correct type was spawned to handle the HTTP connection. The process would receive the request, process the request, make a response and return the response. The architecture was pretty simple and apache adopted it, there was very big downside to it we will discuss it in next paragraph. To make the process of spawning faster apache adopted a prefork model a number of processes were pre-spawned and they would process the HTTP connection as soon as the requests were made.
+So each request was handled by a separate process but by 2005 the web traffic was increasing at a very high rate and the web pages were becoming more and more complex and to decrease the web page load time what was earlier a single request to the server was broken down into multiple requests and each request was made in parallel so that the resources could be downloaded in parallel and moreover browser would keep these connections open using keep-alive header. So apache's basic architecture of one process for one request soon started to consume the entire memory and crash.
+
+Nginx :
+NGINX was written specifically to address the performance limitations of Apache web servers. It was created in 2002 by Igor Sysoev, a system administrator for a popular Russian portal site (Rambler.ru), as a scaling solution to help the site manage greater and greater volumes of traffic. It was open sourced in October 2004.
+The success of Nginx is attributed to its architecture. Nginx follows an asynchronous event driven model for handling requests. Each worker can handle number of requests.
+Question is what is event based model and what is relation of event based model with a worker handling multiple number of request ?
+So suppose hypothetically we have only one worker on the nginx server. So nginx server maintains a queue for all the requests. It picks up the request if no I/O is required for that request it does the processing and returns the request with a response.
+If the request has an I/O the a process is spawned for it at this point asynchronous behaviour and event driven behaviour comes into picture. The web worker does not waits for I/O to complete it moves to next request. What happens to the I/O the I/O on completion fires an event of completion and its callback is placed in queue for execution.
+So in this way one web worker is able to handle multiple number of requests and generally on Nginx server there are number of workers or processes.
+
+Node.js :
+What JVM is to java, node.js is to javascript. It allows us to use javascript as a language for scripting on servers.
+Ryan Dahl creator of Node.js was impressed by Nginx and looked at javascript which was made with asynchronous and event based model. He used google V8 engine which is used in chrome to process Javascript and created Node.js.
+
+7.https://www.quora.com/What-is-the-difference-between-an-Apache-nginx-server-and-a-Node-js-one-Why-cant-the-former-listen-to-data-I-send-it-and-store-it-to-a-database-Or-can-it
+8.https://www.codementor.io/php/tutorial/nginx-node-js-vs-apache
+
+https://www.nginx.com/blog/5-performance-tips-for-node-js-applications/*****
