@@ -47,4 +47,6 @@ Ryan Dahl creator of Node.js was impressed by Nginx and looked at javascript whi
 7.https://www.quora.com/What-is-the-difference-between-an-Apache-nginx-server-and-a-Node-js-one-Why-cant-the-former-listen-to-data-I-send-it-and-store-it-to-a-database-Or-can-it
 8.https://www.codementor.io/php/tutorial/nginx-node-js-vs-apache
 
-https://www.nginx.com/blog/5-performance-tips-for-node-js-applications/*****
+How to imporve Nodejs app server performance using Nginx as reverse proxy server
+******https://www.nginx.com/blog/5-performance-tips-for-node-js-applications/
+
