@@ -3,3 +3,6 @@ https://codeburst.io/demystifying-http-caching-7457c1e4eded
 
 URL params vs Query strings...when to use what as per standards
 https://coursework.vschool.io/express-params-and-query/
+
+Best practices
+https://nodewebapps.com/2017/01/03/13-security-best-practices-for-your-web-application/
