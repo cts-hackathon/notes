@@ -1,0 +1,27 @@
+HTTP caching
+https://codeburst.io/demystifying-http-caching-7457c1e4eded
+
+URL params vs Query strings...when to use what as per standards
+https://coursework.vschool.io/express-params-and-query/
+
+Best practices
+https://nodewebapps.com/2017/01/03/13-security-best-practices-for-your-web-application/
+
+SOAP vs REST API
+https://dzone.com/articles/difference-between-rest-and-soap-api
+
+API gateway
+https://medium.com/@gabrymartinez/stupid-question-of-the-day-what-is-an-api-gateway-and-what-it-has-to-do-with-a-serverless-model-2acee3e3eeba
+
+What are Microservices ?
+https://www.youtube.com/watch?v=gfWr2_H39N0
+
+Serverless
+https://www.youtube.com/watch?v=6wDQqWRh2uI
+https://serverless.com/framework/
+
+Client side vs Server side rendering
+https://medium.freecodecamp.org/what-exactly-is-client-side-rendering-and-hows-it-different-from-server-side-rendering-bd5c786b340d
+
+Best place to learn about Node web techniques 
+nodewebapps.com
