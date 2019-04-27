@@ -25,3 +25,5 @@ https://medium.freecodecamp.org/what-exactly-is-client-side-rendering-and-hows-i
 
 Best place to learn about Node web techniques 
 nodewebapps.com
+
+JWT (RFC 7519) is a standard. passport.js is an implementation that uses JWT. It is not necessary to use passportjs with JWT
