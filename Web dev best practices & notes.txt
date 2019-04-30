@@ -28,3 +28,9 @@ nodewebapps.com
 
 JWT (RFC 7519) is a standard. passport.js is an implementation that uses JWT. It is not necessary to use passportjs with JWT
 https://scotch.io/@devGson/api-authentication-with-json-web-tokensjwt-and-passport
+
+Standards of JSON API formats (Ex. standard for JSON API response format)
+1.https://jsonapi.org
+2.https://medium.com/@bojanmajed/standard-json-api-response-format-c6c1aabcaa6d
+3.https://medium.com/@shazow/how-i-design-json-api-responses-71900f00f2db
+4.
