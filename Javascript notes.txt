@@ -279,3 +279,38 @@ The OR || operator does the following:
 >In other words, a chain of OR "||" returns the first truthy value or the last one if no such value is found.
 >The rules above are similar to OR for AND. The difference is that AND returns the first falsy value while OR returns the first truthy one.
 
+Javascript is lightweight i.e. it doesn't eat up lot of computer memory
+
+JS rameworks like react,angular,vue are 100% based on javascript at core
+
+ES5 --> ES6(ES2015) --> ES7(ES2016) --> ES8(ES2017)
+
+Primitive JS data types
+1.NUmber
+2.String
+3.Boolean
+4.Undefined - value not yet defined
+5.Null - non-existent
+
+Type coercion --. JS converts data types as and when needed
+
+Operator precedence --> which operation should be performed first
+Opearator associativity --> left to right OR right to left execution direction...
+Ex. = operator will execute from right to left i.e. x = y = 5 --> we might expect x to be undefined but as = executes in right to left x =5 & y = 5
+While 2+3+4...+ executes from left to right i.e. first 2+3 and then 5(2+3)+4
+
+switch statements are more like if elseif elseif ... else with an advantage of breaking when condition matches
+
+Falsy values in JS --> undefined, null, 0, "", NaN
+
+Statements vs expression
+Statements don't return anything --> if(){ ... } when this executes it won't return anything
+Expression return something  --> 2+3 return 5 i.e. after execution it does return something
+
+Object -- key-value pairs i.e each value has a key which we can use to access particular value. order doesn't matter in objects while it matters in arrays
+
+Defining objects
+1. Object literals => {}
+2. new Object syntax => new Object()
+
+Unline other languages we can create new scope only by new function in javascript
