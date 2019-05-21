@@ -1,1 +1,6 @@
 =======================DSA notes=======================
+---Arrays in Java---
+The size of an array must be specified by an int value and not long or short
+Array can contains primitives data types as well as objects of a class depending on the definition of array. In case of primitives data types, the actual values are stored in contiguous memory locations. In case of objects of a class, the actual objects are stored in heap segment
+In Java, Arrays are of fixed size. The size of the array will be decided at the time of creation. But if you still want to create Arrays of variable length you can do that using collections like array list
+Multidimentional arrays = Jagged Arrays
