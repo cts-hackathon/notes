@@ -314,3 +314,11 @@ Defining objects
 2. new Object syntax => new Object()
 
 Unline other languages we can create new scope only by new function in javascript
+
+Everything in JS is an object except number, string, null, undefined, boolean, etc
+In JS unline other languages we have constructor/prototype (i.e. class)
+
+Every JS object has "prototype" property, which makes inheritence possible in JS
+
+"new" operator can generate ne wexec context and will associate "this" to the current objetc insteam of global object
+
