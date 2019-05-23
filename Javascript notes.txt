@@ -322,3 +322,4 @@ Every JS object has "prototype" property, which makes inheritence possible in JS
 
 "new" operator can generate ne wexec context and will associate "this" to the current objetc insteam of global object
 
+Variables declared with var in ES5 are function scoped but variable declared using let & const in ES6 are block scoped
