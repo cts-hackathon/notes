@@ -33,4 +33,21 @@ Standards of JSON API formats (Ex. standard for JSON API response format)
 1.https://jsonapi.org
 2.https://medium.com/@bojanmajed/standard-json-api-response-format-c6c1aabcaa6d
 3.https://medium.com/@shazow/how-i-design-json-api-responses-71900f00f2db
-4.
+--------------------------------------------------------------------------------------------------------------------
+HTML5 Application Cache
+HTML5 provides Application Cache (AppCache), which means that a web application is cached, and accessible without an internet connection. The new HTML5 specification allows browsers to prefetch some or all of a website assets such as HTML files, images, CSS, JavaScript, etc, while the client is connected. It is not necessary for the user to have accessed this content previously, for fetching this content. In other words, application cache can prefetch pages that have not been visited at all and are thereby unavailable in the regular browser cache. Prefetching files can speed up the site's performance, though you are of course using bandwidth to download those files initially.
+
+Application cache gives an application three advantages:
+
+Offline browsing - users can use the application when they're offline
+Speed - cached resources load faster
+Reduced server load - browser will only download updated/changed resources from the server
+Browser Cache
+Internet browsers use caching to store HTML web pages by storing a copy of visited pages and then using that copy to render when you re-visit that page. If the date on the page is the same date as the previously stored copy, then the computer uses the one on your hard drive rather than re-downloading it from the internet.
+
+Difference
+AppCache is specifically designed to allow web apps (and web sites) to be made available offline, though the same speed benefits which the normal browser cache provides, when the user is online, are also provided by AppCache.
+
+The key difference with the browser cache is that you can specify all the assets the browser should cache in a manifest file (conceivably your entire site) whereas the browser cache will only store the pages (and associated assets) you have actually visited.
+--------------------------------------------------------------------------------------------------------------------
+
