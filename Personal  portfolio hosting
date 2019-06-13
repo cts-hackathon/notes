@@ -1,12 +1,14 @@
 ========================Getting codebase========================
 1.clone repo in ~/repo
 2. In the server code's config file add private ip (host.ip)
+3. In the client code's config file add uri as /api only coz proxy pass has been done already in the nginx's code
 ========================Setup repo for static content========================
 1.watch the video
 https://www.youtube.com/watch?v=Jsmeh7q9Qv4&t=1s
 2.As we can host multiple sites/apps on single nginx instance/server, check following link for setting up separate server block
 https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-18-04
 3.sudo systemctl start/restart/stop/reload nginx
+4.https://www.youtube.com/watch?v=HwZ3wNaM69s&list=LLvTuAic9mI2cxb49DNa8_RA&index=54&t=0s -- setup route53
 ========================SSL certificate========================
 watch this --> https://www.youtube.com/watch?v=m9aa7xqX67c
 =======================backup files=======================
