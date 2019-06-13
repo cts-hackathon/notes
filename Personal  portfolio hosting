@@ -1,5 +1,6 @@
 ========================Getting codebase========================
 1.clone repo in ~/repo
+2. In the server code's config file add private ip (host.ip)
 ========================Setup repo for static content========================
 1.watch the video
 https://www.youtube.com/watch?v=Jsmeh7q9Qv4&t=1s
