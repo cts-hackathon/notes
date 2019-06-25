@@ -50,4 +50,22 @@ AppCache is specifically designed to allow web apps (and web sites) to be made a
 
 The key difference with the browser cache is that you can specify all the assets the browser should cache in a manifest file (conceivably your entire site) whereas the browser cache will only store the pages (and associated assets) you have actually visited.
 --------------------------------------------------------------------------------------------------------------------
+1. Static site generator (jekyll, Gatsby)
+2. css-modules
+3. Hosting frontend & backend separately
+4. proxy/reverse proxy
+5. webserver vs app server(node)
+6. API gateway
+7. CDN
+8. Microservices vs monolithic architecture
+9. PWA
+10. GraphQL
+11. Serverless
+13. Cookies vs localStorage vs sessionStorage. (Find use cases)
+14. Session storages method(client vs server)
+15. Client side vs server side routing
+16. PM2 & forever
+17. CommonJS
+18. Session mechanisms/session hijacking
+19. HTTP caching
 
