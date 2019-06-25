@@ -1,1 +1,7 @@
 what is "cluster" in nodejs i.e require("cluster")
+Worker thread
+Streams
+Events
+Child processes
+Cluster mode
+Node server vs other server
