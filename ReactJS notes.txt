@@ -58,3 +58,13 @@ In order to use Babel, we need to use the Babel Loader. Loaders are how Webpack 
 3. what's best JS inside JSX or JSX inside JS
 (Conditional rendering for this it's best to save element in side variable and then do {var} to render that conditional element)
 5. Routing issue - https://stackoverflow.com/questions/27928372/react-router-urls-dont-work-when-refreshing-or-writting-manually
+
+Lifecycle methods
+Error boundaries - catches error happening inside comp
+Best lifecycle method for API calls - componentDidMount()
+React patterns - Higher order vs Presentational comp (tech smith)
+Lazy loading or code splitting or dynamic loading - tech smith
+shouldCompUpdate(), React.PureComponent, React.memo
+Reat fragments
+Thunk vs saga
+setState() triggeres virtual DOM update
