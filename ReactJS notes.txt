@@ -54,3 +54,7 @@ How webpack works ? --> https://medium.com/ag-grid/webpack-tutorial-understandin
 In order to use Babel, we need to use the Babel Loader. Loaders are how Webpack can process content other than JavaScript. With Loaders we can get Webpack to process many types of files — CSS, Images, TypeScript and ES2015 code and so on.
 
 
+2. react router & react-error handling
+3. what's best JS inside JSX or JSX inside JS
+(Conditional rendering for this it's best to save element in side variable and then do {var} to render that conditional element)
+5. Routing issue - https://stackoverflow.com/questions/27928372/react-router-urls-dont-work-when-refreshing-or-writting-manually
