@@ -68,3 +68,10 @@ shouldCompUpdate(), React.PureComponent, React.memo
 Reat fragments
 Thunk vs saga
 setState() triggeres virtual DOM update
+
+
+======React Context & Hooks======
+
+Hooks - use react features w/o writing the class (>v16.8)
+Hooks don't wrork inside classes
+Hooks are just functions
