@@ -1,3 +1,5 @@
 Shell vs Terminal --> shell is the program that takes cmds from terminal and gives back to the OS and terminal is the tool which is used to pass the shell cmd
 File system - tree like hierarchical pattern
 pwd - preset working dir
+
+.bashrc file is executed every time we launch new terminal window
