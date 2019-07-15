@@ -16,3 +16,10 @@ https://www.sitepoint.com/basics-node-js-streams/
 ================Child processes================
 ================Cluster mode================
 ================Node server vs other server================
+
+Scaling nodejs - abhinav rastogi (Flipkart)
+1.PM2 internally uses 'cluster' module
+
+PM2
+https://hackernoon.com/running-pm2-node-js-in-production-environments-13e703fc108a
+https://12factor.net/
