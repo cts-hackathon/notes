@@ -54,3 +54,14 @@ The glob syntax is powerful and easy to use. However, if it is not sufficient fo
 For more information about the glob sytnax, see the API specification for the getPathMatcher method in the FileSystem class.
 
 >>>http://devdocs.io/javascript/functions/method_definitions
+
+Compare to C/C++ java doesn't include operator overloading, multiple inheritance, pointers, etc
+Java does automatic memory allocation & de-allocation (handles by GC mechanism) unlike C/C++
+
+How java program runs ?
+Program --> Compiled --> ByteCode (.class) --using JVM--> Interpreter (JVM interpreter will convert to respective machine code) --> Machine code for respective OS
+
+Classification of java programs
+1. Java application - run independently
+2. Java applets - cannot run independently and needs java compatible container
+3. Java servlets - like applets but run on server 
