@@ -66,7 +66,7 @@ Classification of java programs
 2. Java applets - cannot run independently and needs java compatible container
 3. Java servlets - like applets but run on server 
 
-Access modifiers 
-1. In case of inheritance private works separately but public, default, protected in same manner
-2. In case of packages, all private,  public, default, protected work in different manner
+
+JVM vs JRE vs JDK
+https://www.javatpoint.com/difference-between-jdk-jre-and-jvm
 
