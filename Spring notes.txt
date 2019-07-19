@@ -242,3 +242,9 @@ Stereotype annotations
 2.@Repository   --> for DAO classes
 3.@Service      --> for Business classes
 4.@Component    --> for non- MVC classes
+
+
+==================================Spring & hiberante tutorial==================================
+1. It's J2EE(EJBs) vs Spring
+2. J2EE or EJBs were very painful that's why spring came into picture
+3. JSPs, servlets are kinda part of J2EE or EJBs
