@@ -2,6 +2,9 @@
 1.clone repo in ~/repo
 2. In the server code's config file add private ip (host.ip)
 3. In the client code's config file add uri as /api only coz proxy pass has been done already in the nginx's code
+
+=================Install nodejs on ubuntu===================
+https://linuxize.com/post/how-to-install-node-js-on-ubuntu-18.04/
 ========================Setup repo for static content========================
 1.watch the video
 https://www.youtube.com/watch?v=Jsmeh7q9Qv4&t=1s
