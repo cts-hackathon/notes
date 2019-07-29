@@ -23,3 +23,9 @@ Scaling nodejs - abhinav rastogi (Flipkart)
 PM2
 https://hackernoon.com/running-pm2-node-js-in-production-environments-13e703fc108a
 https://12factor.net/
+
+Unlike PHP and other few languages nodejs doesn't need extra server because it listens to the requests and executes the code
+
+Event loop automatically starts when we start nodejs app and this event loop handles the event callbacks but not everything goes into event loop ex. some of the heavy liftings are done by the separate worker pool which then trigger callback to event loop once done with the execution
+
+Node program exits immediately when there is no more work but createServer() or listen() so to day event never finishes the execution and that's why we never come out of node app and logically we should not because node app shoudl keep listening for other requests
